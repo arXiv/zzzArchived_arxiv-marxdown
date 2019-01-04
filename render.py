@@ -8,11 +8,12 @@ from markdown.treeprocessors import Treeprocessor
 
 from arxiv.base import logging
 
+from .domain import SourcePage
+
 logger = logging.getLogger(__name__)
 
 
-def render(content: str, dereferencer: Optional[Callable] = None,
-           static_dereferencer: Optional[Callable] = None) -> str:
+def render(content: str, dereferencer: Optional[Callable] = None) -> str:
     """
     Render markdown content to HTML.
 
@@ -33,13 +34,10 @@ def render(content: str, dereferencer: Optional[Callable] = None,
         Rendered HTML.
 
     """
-    extensions = ['tables', 'fenced_code', 'codehilite']
+    extensions = ['tables', 'fenced_code', 'codehilite', 'toc', 'attr_list']
     if dereferencer is not None:
         extensions.append(ReferenceExtension('a', 'href', dereferencer))
-    if static_dereferencer is not None:
-        extensions.append(
-            ReferenceExtension('img', 'src', static_dereferencer)
-        )
+        extensions.append(ReferenceExtension('img', 'src', dereferencer))
     return markdown(content, extensions=extensions)
 
 
@@ -84,3 +82,27 @@ class ReferenceExtension(Extension):
         """Add :class:`.ReferenceProcessor` to the markdown processor."""
         inst = ReferenceProcessor(self.tag, self.attr, self.dereferencer)
         md.treeprocessors[f'{self.tag}_{self.attr}_reference_processor'] = inst
+
+
+def get_deferencer(page: SourcePage, site_name: str) -> Callable:
+    def link_dereferencer(href: str) -> str:
+        if not href or '://' in href or href.startswith('/') \
+                or href.startswith('#'):
+            return href
+
+        if href.endswith('.md'):
+            path = href[:-3]
+            route = f'{site_name}.from_sitemap'
+            kwarg = 'page_path'
+        elif '.' not in href.split('/')[-1]:
+            path = href
+            route = f'{site_name}.from_sitemap'
+            kwarg = 'page_path'
+        else:
+            path = href
+            route = f'{site_name}.static'
+            kwarg = 'filename'
+        base_path = '/'.join(page.page_path.split('/')[:-1])
+        target_path = '/'.join([base_path, path.rstrip('/')]).lstrip('/')
+        return "{{ url_for('%s', %s='%s') }}" % (route, kwarg, target_path)
+    return link_dereferencer
