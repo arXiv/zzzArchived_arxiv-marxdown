@@ -3,8 +3,8 @@
 from typing import Callable, Optional, Mapping, Union, Tuple
 import xml.etree.ElementTree as ET
 from markdown import markdown, Markdown
-from markdown.extensions import Extension
-from markdown.treeprocessors import Treeprocessor
+from marxdown.extensions import Extension
+from marxdown.treeprocessors import Treeprocessor
 
 from arxiv.base import logging
 

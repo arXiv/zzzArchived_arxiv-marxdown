@@ -1,7 +1,7 @@
 """Use this to upload static content to S3."""
 
 import flask_s3
-from markdown.factory import create_web_app
+from marxdown.factory import create_web_app
 
 app = create_web_app()
 with app.app_context():
