@@ -1,7 +1,7 @@
 """Web Server Gateway Interface entry-point."""
 
 import os
-from docs.factory import create_web_app
+from markdown.factory import create_web_app
 
 
 def application(environ, start_response):
