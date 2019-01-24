@@ -15,7 +15,10 @@
   }
 }
 
+.breadcrumb {
+  margin-bottom: 0;
+}
+
 .breadcrumb ul {
   margin-left: 0;
-  margin-bottom: 0;
 }

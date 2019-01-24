@@ -31,7 +31,8 @@
 <div {% if config.SITE_SEARCH_ENABLED %}class="search-shift-up"{% endif %}>
   {% block breadcrumbs %}
   {% endblock breadcrumbs %}
-
+</div>
+<div {% if config.SITE_SEARCH_ENABLED %}class="search-shift-up"{% endif %}>
   {% block page_content %}
     {% block markdown_content %}
     {% endblock %}
