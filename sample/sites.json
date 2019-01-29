@@ -1,0 +1,21 @@
+{
+  "sites": [
+    {
+      "name": "help",
+      "repo": "git@github.com:arXiv/arxiv-docs.git",
+      "source_dir": "help",
+      "source_ref": "develop",
+      "human_name": "arXiv Help",
+      "url_prefix": "/help"
+    },
+    {
+      "name": "labs",
+      "repo": "git@github.com:arXiv/arxiv-docs.git",
+      "source_dir": "labs",
+      "source_ref": "develop",
+      "human_name": "arXiv Labs",
+      "url_prefix": "",
+      "server": "https://labs.arxiv.org"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "routes": [
+    {"pattern": "/foo/path",  "title": "Foo: Path"}
+  ]
+}

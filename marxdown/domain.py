@@ -3,6 +3,7 @@
 from typing import Any, Optional, Type, NamedTuple, List, Tuple, Dict
 import bleach
 import markdown
+from mypy_extensions import TypedDict
 
 
 class SourcePage(NamedTuple):
@@ -64,3 +65,15 @@ class IndexablePage(NamedTuple):
 
     page: SourcePage
     indexable_content: str
+
+
+SiteTreePart = TypedDict(
+    'SiteTreePart',
+    {
+        'children': 'SiteTree',
+        'title': str,
+        'path': str
+    }
+)
+
+SiteTree = Dict[str, SiteTreePart]

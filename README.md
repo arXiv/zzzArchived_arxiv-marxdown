@@ -1,7 +1,6 @@
-# arXiv Help Documentation
+# arXiv MarXdown
 
-This project implements a markdown-driven static site for arXiv help
-documentation.
+This project implements a markdown-driven static site for arXiv static pages.
 
 ## Site structure
 
@@ -182,4 +181,19 @@ response:
   status: 301
   location: the/new/location
 ---
+```
+
+## Sitemap application
+
+### Build
+
+```bash
+pipenv run python map.py -s /path/to/sites.json -o /path/to/map.json
+```
+
+
+### Serve
+
+```bash
+URLSET_PATH=/path/to/map.json FLASK_DEBUG=1 FLASK_APP=sitemap_app.py pipenv run flask run
 ```

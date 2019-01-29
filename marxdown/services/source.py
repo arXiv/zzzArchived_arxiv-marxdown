@@ -2,20 +2,44 @@
 
 import os
 
+from datetime import datetime
 import frontmatter
-
-from functools import lru_cache
+import subprocess
+from functools import lru_cache as memoize
 from typing import NamedTuple
 from typing import Optional, List, Tuple, Iterable, Dict
-
+import git
 from arxiv.base.globals import get_application_config as config
 
 from ..domain import SourcePage
 
 
+@memoize()
+def get_repo_path(source_path: str) -> str:
+    r = subprocess.run("git rev-parse --show-toplevel", cwd=source_path,
+                       shell=True, stdout=subprocess.PIPE,
+                       stderr=subprocess.PIPE)
+    path = r.stdout.decode('utf-8').strip()
+    if path.startswith("/private"):
+        return path.split("/private", 1)[1]
+    return path
+
+
+@memoize()
+def _get_repo(source_path: str) -> git.Repo:
+    return git.Repo(get_repo_path(source_path))
+
+
+def _get_mtime(source_path: str, page_path: str) -> datetime:
+    path = get_path_for_page(page_path).split(get_repo_path(source_path), 1)[1].lstrip("/")
+    repo = _get_repo(source_path)
+    last_commit = list(repo.iter_commits(paths=path, max_count=1))[0]
+    return datetime.utcfromtimestamp(last_commit.committed_date)
+
+
 def get_source_path() -> str:
     """Get the absolute path to the site source."""
-    return os.path.abspath(config()['SOURCE_PATH'])
+    return os.path.abspath(config().get('SOURCE_PATH', './'))
 
 
 def get_templates_path() -> str:
@@ -28,7 +52,7 @@ def get_path_for_page(page_path: str) -> str:
     return os.path.join(get_source_path(), f'{page_path}.md')
 
 
-@lru_cache(maxsize=1024)
+@memoize(maxsize=1024)
 def page_exists(page_path: str) -> bool:
     """Check whether a source page exists."""
     return os.path.exists(get_path_for_page(page_path))
@@ -52,7 +76,7 @@ def get_parents(page_path: str) -> List[Dict[str, str]]:
     return parents
 
 
-@lru_cache(maxsize=1024)
+@memoize(maxsize=1024)
 def load_page(page_path: str, parents: bool = True) -> SourcePage:
     """Load content and data for a source page."""
     page_data = frontmatter.load(get_path_for_page(page_path))
@@ -63,6 +87,7 @@ def load_page(page_path: str, parents: bool = True) -> SourcePage:
     metadata = {k: v for k, v in page_data.metadata.items()}
     metadata['parents'] = parents
     metadata['title'] = _get_title(page_data, page_path)
+    metadata['modified'] = _get_mtime(get_source_path(), page_path)
 
     return SourcePage(
         page_path=page_path,
