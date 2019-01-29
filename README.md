@@ -264,3 +264,8 @@ URLSET_PATH=/path/to/map.json FLASK_DEBUG=1 FLASK_APP=sitemap_app.py pipenv run 
 
 There is a sample map file at [``sample/map.json``](sample/map.json) in
 this repo.
+
+You should be able to access the XML sitemap (per
+https://www.sitemaps.org/protocol.html) at
+http://localhost:5000/sitemap_index.xml, and the human-readable sitemap (using
+a quick and dirty template) at http://localhost:5000/sitemap.html
