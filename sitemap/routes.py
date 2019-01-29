@@ -29,7 +29,8 @@ def get_xml_sitemap() -> Response:
 
 @blueprint.route('/sitemap.html', methods=['GET'])
 def get_html_sitemap() -> Response:
+    urlset_path = current_app.config['URLSET_PATH']
     return render_template(
         "sitemap/sitemap.html",
-        urlset=sitemap.load_urlset(request.url_root)
+        urlset=sitemap.load_urlset(request.url_root, urlset_path)
     )
