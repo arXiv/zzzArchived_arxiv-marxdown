@@ -1,5 +1,5 @@
 """
-Build a sitemap!
+Build a sitemap.
 
 This script builds a conglomerate site-map from a set of marXdown sites. It
 is assumed that these sites are under Git version control, and that the
@@ -68,6 +68,7 @@ sitemap.
 """
 
 import json
+import re
 import tempfile
 import sys
 import subprocess
@@ -87,6 +88,41 @@ from marxdown.domain import SiteTree, SiteTreePart
 import click
 
 
+@click.command()
+@click.option('--spec-file', '-s', help="Path to the site spec file (json).")
+@click.option('--out-file', '-o', help="Path to the write the sitemap (json)")
+def create_site_map(spec_file: str, out_file: str) -> None:
+    """Create a site map from a site spec (JSON)."""
+    with open(spec_file) as f:
+        specs = json.load(f)
+
+    tree = {}
+    working_path = tempfile.mkdtemp()   # Create a temporary working directory.
+
+    # Validate ahead of time so we don't do costly things.
+    for spec in specs['sites']:
+        _validate_spec(spec)
+
+    for spec in specs['sites']:
+        # Retrieve source for site.
+        repo_path = _retrieve_repository(working_path, spec)
+
+        # Build the site.
+        app = create_web_app()
+        _configure_site(app, repo_path, spec)
+        with app.app_context():
+            build.build_site(False)
+            subtree = site.get_tree()
+            if "server" in spec:
+                subtree = {key: _paths_to_urls(spec["server"], part)
+                           for key, part in subtree.items()}
+            tree.update(subtree)
+
+    # Write the tree to a JSON document. This is used to serve the sitemap.
+    with open(out_file, 'w') as f:
+        json.dump(tree, f, indent=2, cls=ISO8601JSONEncoder)
+
+
 SiteSpec = TypedDict(
     'SiteSpec',
     {
@@ -101,7 +137,32 @@ SiteSpec = TypedDict(
 )
 
 
-def retrieve_repository(working_path: str, spec: SiteSpec):
+def _validate_spec(spec: SiteSpec) -> None:
+    """Check a :class:`.SiteSpec` for common problems."""
+    if 'name' not in spec:
+        raise ValueError('missing name')
+    if re.search(r'[^a-zA-Z_]+', spec['name']):
+        raise ValueError(f'{spec["name"]}: name must contain only [a-ZA-Z_]')
+    if 'repo' not in spec:
+        raise ValueError(f'{spec["name"]}: missing repo')
+    if ':' not in spec['repo'] \
+            or '.git' not in spec['repo'] \
+            or 'git@' not in spec['repo']:
+        raise ValueError(f'{spec["name"]}: that does not look like a git repo')
+    if 'source_dir' not in spec:
+        raise ValueError(f'{spec["name"]}: missing source_dir')
+    if 'source_ref' not in spec:
+        raise ValueError(f'{spec["name"]}: source_ref must be a tag or branch')
+    if 'human_name' not in spec:
+        raise ValueError(f'{spec["name"]}: missing human_name')
+    if 'url_prefix' not in spec:
+        raise ValueError(f'{spec["name"]}: missing url_prefix')
+    if 'server' in spec and '://' not in spec['server']:
+        raise ValueError(f'{spec["name"]}: server should have protocol')
+
+
+def _retrieve_repository(working_path: str, spec: SiteSpec):
+    """Clone a git repo if it doesn't already exist under ``working_path``."""
     repo_path = os.path.join(working_path, spec['name'])
     if not os.path.exists(repo_path):
         r = subprocess.run(
@@ -119,8 +180,12 @@ def retrieve_repository(working_path: str, spec: SiteSpec):
     return repo_path
 
 
-def configure_site(app: Flask, repo_path: str, spec: SiteSpec) -> None:
+def _configure_site(app: Flask, repo_path: str, spec: SiteSpec) -> None:
+    """Configure marXdown from the site spec."""
     source_path = os.path.join(repo_path, spec['source_dir'])
+    if not os.path.exists(source_path):
+        raise RuntimeError(f'{spec["name"]}: {spec["source_dir"]} does not'
+                           f' exist in {spec["repo"]}')
     build_path = tempfile.mkdtemp()
 
     app.config['SITE_NAME'] = spec['name']
@@ -130,47 +195,14 @@ def configure_site(app: Flask, repo_path: str, spec: SiteSpec) -> None:
     app.config['BUILD_PATH'] = build_path
 
 
-def path_to_url(server: str, path: str) -> str:
-    return f"{server}{path}"
-
-
-def paths_to_urls(server: str, tree_part: SiteTreePart) -> SiteTreePart:
-    tree_part["path"] = path_to_url(server, tree_part["path"])
+def _paths_to_urls(server: str, tree_part: SiteTreePart) -> SiteTreePart:
+    """Reformat paths in a :const:`SiteTreePart` using a ``server`` URL."""
+    tree_part["path"] = f"{server}{tree_part['path']}"
     if "children" in tree_part:
-        tree_part["children"] = {key: paths_to_urls(server, child)
+        tree_part["children"] = {key: _paths_to_urls(server, child)
                                  for key, child
                                  in tree_part["children"].items()}
     return tree_part
-
-
-@click.command()
-@click.option('--spec-file', '-s', help="Path to the site spec file (json).")
-@click.option('--out-file', '-o', help="Path to the write the sitemap (json)")
-def create_site_map(spec_file: str, out_file: str) -> None:
-    """Create a site map from a site spec (JSON)."""
-    with open(spec_file) as f:
-        specs = json.load(f)
-
-    tree = {}
-    # Create a temporary working directory.
-    working_path = tempfile.mkdtemp()
-
-    for spec in specs['sites']:
-        # Retrieve source for site.
-        repo_path = retrieve_repository(working_path, spec)
-
-        # Build the site.
-        app = create_web_app()
-        configure_site(app, repo_path, spec)
-        with app.app_context():
-            build.build_site(False)
-            subtree = site.get_tree()
-            if "server" in spec:
-                subtree = {key: paths_to_urls(spec["server"], part)
-                           for key, part in subtree.items()}
-            tree.update(subtree)
-    with open(out_file, 'w') as f:
-        json.dump(tree, f, indent=2, cls=ISO8601JSONEncoder)
 
 
 if __name__ == '__main__':
