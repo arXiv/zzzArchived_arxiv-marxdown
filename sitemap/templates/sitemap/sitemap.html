@@ -1,0 +1,18 @@
+{%- extends "base/base.html" %}
+
+{% macro render_urlset(urlset) %}
+<ul>
+  {% for _, url in urlset.items() %}
+  <li>
+    <a href="{{ url.path }}">{{ url.title }}</a>
+    {% if url.children %}
+      {{ render_urlset(url.children) }}
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{% block content %}
+  {{ render_urlset(urlset) }}
+{% endblock %}

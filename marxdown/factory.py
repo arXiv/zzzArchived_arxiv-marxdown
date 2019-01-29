@@ -14,7 +14,7 @@ def create_web_app() -> Flask:
     """Initialize an instance of the static pages application."""
     from . import config
 
-    app = Flask(config.SITE_NAME)
+    app = Flask(__name__)
     app.config.from_object(config)
 
     Base(app)
@@ -23,7 +23,7 @@ def create_web_app() -> Flask:
     app.register_blueprint(routes.docs)     # Provides base templates.
     app.register_blueprint(
         routes.get_blueprint(
-            app.config['BUILD_PATH'],
+            app.config.get('BUILD_PATH', "./"),
             with_search=app.config.get('SITE_SEARCH_ENABLED', True)
         )
     )

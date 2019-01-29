@@ -1,10 +1,14 @@
 """Provides an interface to the built site at runtime."""
 
+from typing import Iterable, Tuple, Dict
+
 import os
 import json
 
 from arxiv.base.globals import get_application_config as config
-from ..domain import Page
+from arxiv.util.serialize import ISO8601JSONEncoder
+
+from ..domain import Page, SiteTree
 
 
 class PageNotFound(Exception):
@@ -19,10 +23,109 @@ def create_all(site_path: str) -> None:
             os.makedirs(path)
 
 
+def walk() -> Iterable[Tuple[str, str, dict]]:
+    """
+    Walk the site tree.
+
+    Returns
+    -------
+    generator
+        Yields the parent, path, and metadata of each page.
+
+    """
+    prefix = get_url_prefix()
+    for parent, dirs, files in os.walk(get_pages_path()):
+        for fname in files:
+            child = fname.rsplit('.j2', 1)[0]
+            rel_parent = parent.split(get_pages_path().rstrip("/"), 1)[1]
+            this_parent = str(rel_parent)
+            if not this_parent.startswith("/"):
+                this_parent = "/" + this_parent
+
+            # /foo/bar, index -> /foo, bar
+            if child == "index":
+                this_parent, child = this_parent.rsplit('/', 1)
+            if not this_parent.startswith("/"):
+                this_parent = "/" + this_parent
+
+            if this_parent == "/":  # Avoid a double slash.
+                pattern = prefix.rstrip("/") + "/" + child
+            else:
+                pattern = prefix.rstrip("/") + this_parent + "/" + child
+
+            # load_metadata needs actual file name (e.g. 'index')
+            path = (rel_parent + "/" + fname.rsplit('.j2', 1)[0]).lstrip("/")
+            this_parent = prefix + this_parent
+            yield this_parent, pattern.rstrip("/"), load_metadata(path)
+
+
+def get_tree() -> SiteTree:
+    """
+    Get the site tree.
+
+    Returns
+    -------
+    dict
+
+    """
+    prefix = get_url_prefix()
+    if not prefix.startswith("/"):
+        prefix = "/" + prefix
+    tree = {
+        prefix: {
+            "children": {},
+            "title": get_site_human_name(),
+            "path": prefix
+        }
+    }
+
+    def _get_subpaths(parent: str) -> Iterable[str]:
+        parent_parts = [prefix] \
+            + parent.split(prefix, 1)[1].strip("/").split("/")
+        subpaths = set()
+        subpath = ""
+        for part in parent_parts:
+            subpath = subpath.rstrip("/") + "/" + part.strip("/")
+            if len(subpath) > 1 and subpath.endswith("/"):
+                subpath = subpath[:-1]
+            subpaths.add(subpath)
+        return sorted(subpaths, key=len)
+
+    for parent, pattern, metadata in walk():
+        subtree = tree[prefix]
+        for subpath in _get_subpaths(parent):
+            if subpath != subtree['path']:
+                if subpath not in subtree['children']:
+                    subtree['children'][subpath] = {
+                        'children': {},
+                        'path': subpath
+                    }
+                subtree = subtree['children'][subpath]
+        if pattern == subtree['path']:
+            subtree.update({
+                'title': metadata['title'],
+                'modified': metadata['modified']
+            })
+        elif pattern in subtree['children']:
+            subtree['children'][pattern].update({
+                'title': metadata['title'],
+                'modified': metadata['modified'],
+                'path': pattern
+            })
+        else:
+            subtree['children'][pattern] = {
+                'title': metadata['title'],
+                'path': pattern,
+                'modified': metadata['modified'],
+                'children': {}
+            }
+    return tree
+
+
 def get_static_path() -> str:
     """Get the absolute path for the site static directory."""
     return os.path.abspath(os.path.join(
-        config()['BUILD_PATH'],
+        config().get('BUILD_PATH', './'),
         'static',
         get_site_name()
     ))
@@ -45,17 +148,20 @@ def get_site_human_name() -> str:
 
 def get_data_path() -> str:
     """Get the absolute path for the site data directory."""
-    return os.path.abspath(os.path.join(config()['BUILD_PATH'], 'data'))
+    return os.path.abspath(
+        os.path.join(config().get('BUILD_PATH', './'), 'data'))
 
 
 def get_templates_path() -> str:
     """Get the absolute path for the site templates directory."""
-    return os.path.abspath(os.path.join(config()['BUILD_PATH'], 'templates'))
+    return os.path.abspath(
+        os.path.join(config().get('BUILD_PATH', './'), 'templates'))
 
 
 def get_pages_path() -> str:
     """Get the absolute path for the site pages directory."""
-    return os.path.abspath(os.path.join(config()['BUILD_PATH'], 'pages'))
+    return os.path.abspath(
+        os.path.join(config().get('BUILD_PATH', './'), 'pages'))
 
 
 def get_page_filename(page_path: str) -> str:
@@ -85,7 +191,7 @@ def store_metadata(page_path: str, data: dict) -> None:
     if not os.path.exists(parent_dir):
         os.makedirs(parent_dir)
     with open(get_path_for_data(page_path), 'w') as f:
-        json.dump(data, f)
+        json.dump(data, f, cls=ISO8601JSONEncoder)
 
 
 def store_page_content(page_path: str, content: str) -> None:
