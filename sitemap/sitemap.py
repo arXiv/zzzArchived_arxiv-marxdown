@@ -1,4 +1,24 @@
-"""Loads a sitemap."""
+"""
+Loads a sitemap.
+
+This module relies on a sitemap JSON document, that looks like this:
+
+.. code-block:: json
+
+   {
+     "/help": {
+       "children": {
+         "/help/00README": {
+           "title": "The 00README.XXX file",
+           "path": "/help/00README",
+           "modified": "2019-01-04T22:05:42",
+           "children": {...}
+         },
+         ...
+
+
+"""
+
 
 from typing import Any
 import json
@@ -10,6 +30,7 @@ from .domain import URLSet
 
 class URLDecoder(ISO8601JSONDecoder):
     """JSON Decoder that rewrites paths as full URLs."""
+
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         """Pass :func:`object_hook` to the base constructor."""
         self._url_root = kwargs.pop('url_root', '').rstrip('/')

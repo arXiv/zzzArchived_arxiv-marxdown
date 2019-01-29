@@ -4,300 +4,300 @@
       "/help/00README": {
         "title": "The 00README.XXX file",
         "path": "/help/00README",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/accesskeys": {
         "title": "Access keys",
         "path": "/help/accesskeys",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/ancillary_files": {
         "title": "Ancillary files",
         "path": "/help/ancillary_files",
-        "modified": "2019-01-10T19:33:53",
+        "modified": "2019-01-10T19:33:53+00:00",
         "children": {}
       },
       "/help/arxiv_identifier": {
         "title": "Understanding the arXiv identifier",
         "path": "/help/arxiv_identifier",
-        "modified": "2019-01-10T19:35:55",
+        "modified": "2019-01-10T19:35:55+00:00",
         "children": {}
       },
       "/help/arxiv_identifier_for_services": {
         "title": "arXiv identifier scheme - information for interacting services",
         "path": "/help/arxiv_identifier_for_services",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/author_identifiers": {
         "title": "Author Identifiers",
         "path": "/help/author_identifiers",
-        "modified": "2019-01-10T19:13:08",
+        "modified": "2019-01-10T19:13:08+00:00",
         "children": {}
       },
       "/help/authority": {
         "title": "Authority Records",
         "path": "/help/authority",
-        "modified": "2019-01-10T19:16:59",
+        "modified": "2019-01-10T19:16:59+00:00",
         "children": {}
       },
       "/help/bib_feed": {
         "title": "Automated DOI and journal reference updates from publishers",
         "path": "/help/bib_feed",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/bulk_data": {
         "title": "arXiv Bulk Data Access",
         "path": "/help/bulk_data",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/bulk_data_s3": {
         "title": "arXiv Bulk Data Access - Amazon S3",
         "path": "/help/bulk_data_s3",
-        "modified": "2019-01-10T19:19:10",
+        "modified": "2019-01-10T19:19:10+00:00",
         "children": {}
       },
       "/help/config_browser": {
         "title": "Configuring Your Browser",
         "path": "/help/config_browser",
-        "modified": "2019-01-10T19:13:34",
+        "modified": "2019-01-10T19:13:34+00:00",
         "children": {}
       },
       "/help/contact": {
         "title": "Contacting arXiv administrators",
         "path": "/help/contact",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/cross": {
         "title": "To cross-list an article to another category",
         "path": "/help/cross",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/data_conservancy": {
         "title": "Data set support in collaboration with the Data Conservancy",
         "path": "/help/data_conservancy",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/datasets": {
         "title": "Support for data sets associated with arXiv articles",
         "path": "/help/datasets",
-        "modified": "2019-01-10T19:27:27",
+        "modified": "2019-01-10T19:27:27+00:00",
         "children": {}
       },
       "/help/donate": {
         "title": "Donations to arXiv",
         "path": "/help/donate",
-        "modified": "2019-01-10T19:14:03",
+        "modified": "2019-01-10T19:14:03+00:00",
         "children": {}
       },
       "/help/econ": {
         "title": "Economics archive (September 2017)",
         "path": "/help/econ",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/eess": {
         "title": "Electrical Engineering and Systems Science archive (September 2017)",
         "path": "/help/eess",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/email-protection": {
         "title": "Protecting your Privacy",
         "path": "/help/email-protection",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/endorsement": {
         "title": "The arXiv endorsement system",
         "path": "/help/endorsement",
-        "modified": "2019-01-10T19:36:46",
+        "modified": "2019-01-10T19:36:46+00:00",
         "children": {}
       },
       "/help/find": {
         "title": "To find an article",
         "path": "/help/find",
-        "modified": "2019-01-10T19:26:11",
+        "modified": "2019-01-10T19:26:11+00:00",
         "children": {}
       },
       "/help/general": {
         "title": "General Information About arXiv",
         "path": "/help/general",
-        "modified": "2019-01-10T19:18:03",
+        "modified": "2019-01-10T19:18:03+00:00",
         "children": {}
       },
       "/help/gzip": {
         "title": "Gzipped Files",
         "path": "/help/gzip",
-        "modified": "2019-01-10T19:29:55",
+        "modified": "2019-01-10T19:29:55+00:00",
         "children": {}
       },
       "/help/ir": {
         "title": "Institutional Repository (IR) Interoperability",
         "path": "/help/ir",
-        "modified": "2019-01-10T19:31:22",
+        "modified": "2019-01-10T19:31:22+00:00",
         "children": {}
       },
       "/help/jref": {
         "title": "To add a journal reference, DOI or report number to an article",
         "path": "/help/jref",
-        "modified": "2019-01-10T19:14:44",
+        "modified": "2019-01-10T19:14:44+00:00",
         "children": {}
       },
       "/help/license": {
         "title": "arXiv License Information",
         "path": "/help/license",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/macro_list": {
         "title": "TeX macro packages",
         "path": "/help/macro_list",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/mathjax": {
         "title": "What is MathJax?",
         "path": "/help/mathjax",
-        "modified": "2019-01-10T19:34:40",
+        "modified": "2019-01-10T19:34:40+00:00",
         "children": {}
       },
       "/help/mimetypes": {
         "title": "Media types delivered by arXiv",
         "path": "/help/mimetypes",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/mirrors": {
         "title": "arXiv mirror sites",
         "path": "/help/mirrors",
-        "modified": "2019-01-10T19:33:02",
+        "modified": "2019-01-10T19:33:02+00:00",
         "children": {}
       },
       "/help/misuse": {
         "title": "Misuse of arXiv Policy or Resources",
         "path": "/help/misuse",
-        "modified": "2019-01-10T19:21:15",
+        "modified": "2019-01-10T19:21:15+00:00",
         "children": {}
       },
       "/help/moderation": {
         "title": "The arXiv moderation system",
         "path": "/help/moderation",
-        "modified": "2019-01-10T19:20:18",
+        "modified": "2019-01-10T19:20:18+00:00",
         "children": {}
       },
       "/help/my_arxiv": {
         "title": "my.arXiv.org",
         "path": "/help/my_arxiv",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/myarticles": {
         "title": "Using the `myarticles` widget",
         "path": "/help/myarticles",
-        "modified": "2019-01-10T19:32:07",
+        "modified": "2019-01-10T19:32:07+00:00",
         "children": {}
       },
       "/help/myarticles_ex2": {
         "title": "Example using the `myarticles` widget with `arxiv` format",
         "path": "/help/myarticles_ex2",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/not-registered": {
         "title": "Why isn't a Person \"Registered as an Author?\"",
         "path": "/help/not-registered",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/openurl": {
         "title": "OpenURL linking services",
         "path": "/help/openurl",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/orcid": {
         "title": "ORCID identifiers",
         "path": "/help/orcid",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/otherformats": {
         "title": "Submission of PDF",
         "path": "/help/otherformats",
-        "modified": "2019-01-10T17:13:18",
+        "modified": "2019-01-10T17:13:18+00:00",
         "children": {}
       },
       "/help/overlap": {
         "title": "Detecting Text Overlap with Work in arXiv",
         "path": "/help/overlap",
-        "modified": "2019-01-10T19:30:41",
+        "modified": "2019-01-10T19:30:41+00:00",
         "children": {}
       },
       "/help/passwords": {
         "title": "Passwords in arXiv",
         "path": "/help/passwords",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/pdf": {
         "title": "Portable Document Format (PDF)",
         "path": "/help/pdf",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/prep": {
         "title": "Title and Abstract Fields",
         "path": "/help/prep",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/primer": {
         "title": "arXiv Primer",
         "path": "/help/primer",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/ps": {
         "title": "PostScript",
         "path": "/help/ps",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/pscm": {
         "title": "Computer Modern Postscript Fonts in Adobe Type I Format",
         "path": "/help/pscm",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/pstypeI": {
         "title": "PostScript with Type I (scalable) fonts",
         "path": "/help/pstypeI",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/psvariants": {
         "title": "PostScript Variants",
         "path": "/help/psvariants",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/q-fin": {
         "title": "The Quantitative Finance (q-fin) archive (3/2014)",
         "path": "/help/q-fin",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {
           "/help/q-fin/announcement": {
             "title": "Announcement of new Quantitative Finance (q-fin) archive",
             "path": "/help/q-fin/announcement",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           }
         }
@@ -305,365 +305,365 @@
       "/help/registerhelp": {
         "title": "Directions for Author Registration",
         "path": "/help/registerhelp",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/replace": {
         "title": "To replace an article",
         "path": "/help/replace",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/robots": {
         "title": "Robots Beware",
         "path": "/help/robots",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/rss": {
         "title": "RSS news feeds for arXiv updates",
         "path": "/help/rss",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/sciencewise": {
         "title": "ScienceWISE",
         "path": "/help/sciencewise",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/scientific_ad_board": {
         "title": "arXiv Scientific Advisory Board",
         "path": "/help/scientific_ad_board",
-        "modified": "2019-01-23T18:19:38",
+        "modified": "2019-01-23T18:19:38+00:00",
         "children": {}
       },
       "/help/semanticscholar": {
         "title": "Semantic Scholar Pilot for Computer Science Papers",
         "path": "/help/semanticscholar",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/sizes": {
         "title": "Oversized Submissions",
         "path": "/help/sizes",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/ssl": {
         "title": "SSL Support in arXiv",
         "path": "/help/ssl",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/stats": {
         "title": "arXiv usage statistics",
         "path": "/help/stats",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {
           "/help/stats/1999_by_area": {
             "children": {
               "/help/stats/1999_by_area/au_all": {
                 "title": "All arXiv Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_all",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_astro-ph": {
                 "title": "arXiv:astro-ph Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_astro-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_cond-mat": {
                 "title": "arXiv:cond-mat Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_cond-mat",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_cs": {
                 "title": "arXiv:cs Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_cs",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_gr-qc": {
                 "title": "arXiv:gr-qc Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_gr-qc",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_hep": {
                 "title": "arXiv:hep Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_hep",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_math": {
                 "title": "arXiv:math Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_math",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_nlin": {
                 "title": "arXiv:nlin Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_nlin",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_nucl": {
                 "title": "arXiv:nucl Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_nucl",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_physics": {
                 "title": "arXiv:physics(other) Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_physics",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/1999_by_area/au_quant-ph": {
                 "title": "arXiv:quant-ph Submissions '97-'00",
                 "path": "/help/stats/1999_by_area/au_quant-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             },
             "path": "/help/stats/1999_by_area",
             "title": "[arXiv](/) monthly submission **rate** statistics, 31 Dec '00",
-            "modified": "2019-01-04T22:05:42"
+            "modified": "2019-01-04T22:05:42+00:00"
           },
           "/help/stats/2000_by_area": {
             "children": {
               "/help/stats/2000_by_area/au_all": {
                 "title": "All arXiv Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_all",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_astro-ph": {
                 "title": "arXiv:astro-ph Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_astro-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_cond-mat": {
                 "title": "arXiv:cond-mat Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_cond-mat",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_cs": {
                 "title": "arXiv:cs Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_cs",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_gr-qc": {
                 "title": "arXiv:gr-qc Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_gr-qc",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_hep": {
                 "title": "arXiv:hep Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_hep",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_math": {
                 "title": "arXiv:math Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_math",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_nlin": {
                 "title": "arXiv:nlin Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_nlin",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_nucl": {
                 "title": "arXiv:nucl Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_nucl",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_physics": {
                 "title": "arXiv:physics(other) Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_physics",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2000_by_area/au_quant-ph": {
                 "title": "arXiv:quant-ph Submissions '97-'01",
                 "path": "/help/stats/2000_by_area/au_quant-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             },
             "path": "/help/stats/2000_by_area",
             "title": "[arXiv](/) monthly submission **rate** statistics, 31 Dec '01",
-            "modified": "2019-01-04T22:05:42"
+            "modified": "2019-01-04T22:05:42+00:00"
           },
           "/help/stats/2001_by_area": {
             "children": {
               "/help/stats/2001_by_area/au_all": {
                 "title": "All arXiv Submissions '00-'02",
                 "path": "/help/stats/2001_by_area/au_all",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_astro-ph": {
                 "title": "arXiv:astro-ph Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_astro-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_cond-mat": {
                 "title": "arXiv:cond-mat Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_cond-mat",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_cs": {
                 "title": "arXiv:cs Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_cs",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_gr-qc": {
                 "title": "arXiv:gr-qc Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_gr-qc",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_hep": {
                 "title": "arXiv:hep Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_hep",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_math": {
                 "title": "arXiv:math Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_math",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_nlin": {
                 "title": "arXiv:nlin Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_nlin",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_nucl": {
                 "title": "arXiv:nucl Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_nucl",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_physics": {
                 "title": "arXiv:physics(other) Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_physics",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2001_by_area/au_quant-ph": {
                 "title": "arXiv:quant-ph Submissions '97-'01",
                 "path": "/help/stats/2001_by_area/au_quant-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             },
             "path": "/help/stats/2001_by_area",
             "title": "[arXiv](/) monthly submission **rate** statistics, 31 Dec '01",
-            "modified": "2019-01-04T22:05:42"
+            "modified": "2019-01-04T22:05:42+00:00"
           },
           "/help/stats/2002_by_area": {
             "children": {
               "/help/stats/2002_by_area/au_all": {
                 "title": "All arXiv Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_all",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_astro-ph": {
                 "title": "arXiv:astro-ph Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_astro-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_cond-mat": {
                 "title": "arXiv:cond-mat Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_cond-mat",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_cs": {
                 "title": "arXiv:cs Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_cs",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_gr-qc": {
                 "title": "arXiv:gr-qc Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_gr-qc",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_hep": {
                 "title": "arXiv:hep Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_hep",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_math": {
                 "title": "arXiv:math Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_math",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_nlin": {
                 "title": "arXiv:nlin Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_nlin",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_nucl": {
                 "title": "arXiv:nucl Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_nucl",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_physics": {
                 "title": "arXiv:physics Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_physics",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_q-bio": {
                 "title": "arXiv:q-bio Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_q-bio",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/au_quant-ph": {
                 "title": "arXiv:quant-ph Submissions '00-'03",
                 "path": "/help/stats/2002_by_area/au_quant-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/hcamonthly.03": {
                 "title": "[arXiv](/) monthly submission **rate** statistics, 31 Dec '03",
                 "path": "/help/stats/2002_by_area/hcamonthly.03",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2002_by_area/remmonthly.03": {
                 "title": "[arXiv](/) monthly submission **rate** statistics, 31 Dec '03",
                 "path": "/help/stats/2002_by_area/remmonthly.03",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             },
@@ -674,95 +674,95 @@
               "/help/stats/2003_by_area/au_all": {
                 "title": "All arXiv Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_all",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_astro-ph": {
                 "title": "arXiv:astro-ph Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_astro-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_cond-mat": {
                 "title": "arXiv:cond-mat Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_cond-mat",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_cs": {
                 "title": "arXiv:cs Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_cs",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_gr-qc": {
                 "title": "arXiv:gr-qc Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_gr-qc",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_hep": {
                 "title": "arXiv:hep Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_hep",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_math": {
                 "title": "arXiv:math Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_math",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_nlin": {
                 "title": "arXiv:nlin Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_nlin",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_nucl": {
                 "title": "arXiv:nucl Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_nucl",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_physics": {
                 "title": "arXiv:physics Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_physics",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_q-bio": {
                 "title": "arXiv:q-bio Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_q-bio",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/au_quant-ph": {
                 "title": "arXiv:quant-ph Submissions '00-'04",
                 "path": "/help/stats/2003_by_area/au_quant-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2003_by_area/remmonthly": {
                 "title": "[arXiv](/) monthly submission **rate** statistics, 31 Dec '04",
                 "path": "/help/stats/2003_by_area/remmonthly",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             },
             "path": "/help/stats/2003_by_area",
             "title": "arXiv monthly submission **rate** statistics, 31 Dec '04",
-            "modified": "2019-01-04T22:05:42"
+            "modified": "2019-01-04T22:05:42+00:00"
           },
           "/help/stats/2004_by_area": {
             "title": "arXiv monthly submission **rate** statistics, 31 Dec '05",
             "path": "/help/stats/2004_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {
               "/help/stats/2004_by_area/remmonthly": {
                 "title": "[arXiv](/) monthly submission **rate** statistics, 31 Dec '05",
                 "path": "/help/stats/2004_by_area/remmonthly",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             }
@@ -772,89 +772,89 @@
               "/help/stats/2005_by_area/au_all": {
                 "title": "arXiv:all Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_all",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_astro-ph": {
                 "title": "arXiv:astro-ph Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_astro-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_cond-mat": {
                 "title": "arXiv:cond-mat Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_cond-mat",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_cs": {
                 "title": "arXiv:cs Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_cs",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_gr-qc": {
                 "title": "arXiv:gr-qc Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_gr-qc",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_hep": {
                 "title": "arXiv:hep Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_hep",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_mathall": {
                 "title": "arXiv:math Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_mathall",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_nlin": {
                 "title": "arXiv:nlin Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_nlin",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_nucl": {
                 "title": "arXiv:nucl Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_nucl",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_physics": {
                 "title": "arXiv:physics Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_physics",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_q-bio": {
                 "title": "arXiv:q-bio Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_q-bio",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               },
               "/help/stats/2005_by_area/au_quant-ph": {
                 "title": "arXiv:quant-ph Submissions '04-'06",
                 "path": "/help/stats/2005_by_area/au_quant-ph",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             },
             "path": "/help/stats/2005_by_area",
             "title": "arXiv monthly submission **rate** statistics, 31 Dec '06",
-            "modified": "2019-01-04T22:05:42"
+            "modified": "2019-01-04T22:05:42+00:00"
           },
           "/help/stats/2008_by_area": {
             "title": "arXiv monthly submission **rate** statistics, 1 Jan '09",
             "path": "/help/stats/2008_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {
               "/help/stats/2008_by_area/remmonthly": {
                 "title": "arXiv monthly submission **rate** statistics, 31 Dec '08",
                 "path": "/help/stats/2008_by_area/remmonthly",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             }
@@ -862,12 +862,12 @@
           "/help/stats/2009_by_area": {
             "title": "arXiv monthly submission **rate** statistics, 1 Jan '10",
             "path": "/help/stats/2009_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {
               "/help/stats/2009_by_area/remmonthly": {
                 "title": "arXiv monthly submission **rate** statistics, 31 Dec '09",
                 "path": "/help/stats/2009_by_area/remmonthly",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             }
@@ -875,12 +875,12 @@
           "/help/stats/2010_by_area": {
             "title": "arXiv monthly submission **rate** statistics, 1 Jan '11",
             "path": "/help/stats/2010_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {
               "/help/stats/2010_by_area/remmonthly": {
                 "title": "[arXiv](/) monthly submission **rate** statistics, 1 Jan '11",
                 "path": "/help/stats/2010_by_area/remmonthly",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             }
@@ -888,12 +888,12 @@
           "/help/stats/2011_by_area": {
             "title": "arXiv monthly submission **rate** statistics, 1 Jan '12",
             "path": "/help/stats/2011_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {
               "/help/stats/2011_by_area/remmonthly": {
                 "title": "[arXiv](/) monthly submission **rate** statistics, 1 Jan '12",
                 "path": "/help/stats/2011_by_area/remmonthly",
-                "modified": "2019-01-04T22:05:42",
+                "modified": "2019-01-04T22:05:42+00:00",
                 "children": {}
               }
             }
@@ -901,43 +901,43 @@
           "/help/stats/2012_by_area": {
             "title": "arXiv submission rate statistics",
             "path": "/help/stats/2012_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/stats/2013_by_area": {
             "title": "arXiv submission rate statistics",
             "path": "/help/stats/2013_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/stats/2014_by_area": {
             "title": "arXiv submission rate statistics",
             "path": "/help/stats/2014_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/stats/2015_by_area": {
             "title": "arXiv submission rate statistics",
             "path": "/help/stats/2015_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/stats/2016_by_area": {
             "title": "arXiv submission rate statistics",
             "path": "/help/stats/2016_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/stats/2017_by_area": {
             "title": "arXiv submission rate statistics",
             "path": "/help/stats/2017_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/stats/2018_by_area": {
             "title": "arXiv submission rate statistics",
             "path": "/help/stats/2018_by_area",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           }
         }
@@ -945,210 +945,210 @@
       "/help/submission-policy": {
         "title": "arXiv Submission Policies",
         "path": "/help/submission-policy",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/submit": {
         "title": "To submit an article",
         "path": "/help/submit",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/submit_html": {
         "title": "Submission of HTML+JPEG/PNG/GIF",
         "path": "/help/submit_html",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/submit_index": {
         "title": "Submission of indexes for conference proceedings",
         "path": "/help/submit_index",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/submit_pdf": {
         "title": "Submission of PDF",
         "path": "/help/submit_pdf",
-        "modified": "2019-01-10T17:16:59",
+        "modified": "2019-01-10T17:16:59+00:00",
         "children": {}
       },
       "/help/submit_ps": {
         "title": "Submission of PostScript",
         "path": "/help/submit_ps",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/submit_status": {
         "title": "Submission Status",
         "path": "/help/submit_status",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/submit_sword": {
         "title": "arXiv.org SWORD/APP Deposit API User's Manual",
         "path": "/help/submit_sword",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/submit_tex": {
         "title": "Considerations for TeX Submissions",
         "path": "/help/submit_tex",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/subscribe": {
         "title": "<span id=\"subscribe\"></span>",
         "path": "/help/subscribe",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/support": {
         "title": "arXiv Business Support and Governance Model",
         "path": "/help/support",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {
           "/help/support/2009_usage": {
             "title": "2009 Institutional arXiv Usage Data",
             "path": "/help/support/2009_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2010_budget": {
             "title": "arXiv 2010 Budget",
             "path": "/help/support/2010_budget",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2010_supporters": {
             "title": "arXiv 2010 Supporters",
             "path": "/help/support/2010_supporters",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2010_usage": {
             "title": "2010 Institutional arXiv Usage Data",
             "path": "/help/support/2010_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2011_budget": {
             "title": "arXiv 2011 Budget",
             "path": "/help/support/2011_budget",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2011_supporters": {
             "title": "arXiv 2011 Supporters",
             "path": "/help/support/2011_supporters",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2011_usage": {
             "title": "2011 Institutional arXiv Usage Data",
             "path": "/help/support/2011_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2012_budget": {
             "title": "arXiv 2012 Budget",
             "path": "/help/support/2012_budget",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2012_supporters": {
             "title": "arXiv 2012 Supporters",
             "path": "/help/support/2012_supporters",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2012_usage": {
             "title": "2012 Institutional arXiv Usage Data",
             "path": "/help/support/2012_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2013_usage": {
             "title": "2013 Institutional arXiv Usage Data",
             "path": "/help/support/2013_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2014_usage": {
             "title": "2014 Institutional arXiv Usage Data",
             "path": "/help/support/2014_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2015_usage": {
             "title": "2015 Institutional arXiv Usage Data",
             "path": "/help/support/2015_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2016_usage": {
             "title": "2016 Institutional arXiv Usage Data",
             "path": "/help/support/2016_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/2017_usage": {
             "title": "2017 Institutional arXiv Usage Data",
             "path": "/help/support/2017_usage",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/arxiv_busplan_Apr2011": {
             "title": "arXiv Business Planning Update",
             "path": "/help/support/arxiv_busplan_Apr2011",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/arxiv_busplan_Dec2010": {
             "title": "arXiv Business Planning Update",
             "path": "/help/support/arxiv_busplan_Dec2010",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/arxiv_busplan_Jan2012": {
             "title": "arXiv Business Planning Update",
             "path": "/help/support/arxiv_busplan_Jan2012",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/arxiv_busplan_July2010": {
             "title": "arXiv Business Planning Update",
             "path": "/help/support/arxiv_busplan_July2010",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/arxiv_busplan_July2011": {
             "title": "arXiv Business Planning Update",
             "path": "/help/support/arxiv_busplan_July2011",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/arxiv_busplan_Oct2011": {
             "title": "arXiv Business Planning Update",
             "path": "/help/support/arxiv_busplan_Oct2011",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/faq": {
             "title": "arXiv Membership Program FAQ",
             "path": "/help/support/faq",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/sustainability_advisory_group": {
             "title": "arXiv Sustainability Advisory Group",
             "path": "/help/support/sustainability_advisory_group",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/support/whitepaper": {
             "title": "arXiv Business Model White Paper",
             "path": "/help/support/whitepaper",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           }
         }
@@ -1156,127 +1156,127 @@
       "/help/tar": {
         "title": "Creating `tar.gz` and `zip` Files",
         "path": "/help/tar",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/terms_of_submission": {
         "title": "arXiv Terms of Submission",
         "path": "/help/terms_of_submission",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/tetex3": {
         "title": "Possible problems with arXiv transition to teTeX3",
         "path": "/help/tetex3",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/tex": {
         "title": "TeX, LaTeX, etc.",
         "path": "/help/tex",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/texhyphenation": {
         "title": "Hyphenation Patterns for Languages other than American English",
         "path": "/help/texhyphenation",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/texlive": {
         "title": "Notes about arXiv's TeXLive Version",
         "path": "/help/texlive",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/texprobs": {
         "title": "Why doesn't my processed TeX submission look the way I expected it?",
         "path": "/help/texprobs",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/textures": {
         "title": "Textures",
         "path": "/help/textures",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/third_party_submission": {
         "title": "Third party submission",
         "path": "/help/third_party_submission",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/toc": {
         "title": "arXiv Help Contents",
         "path": "/help/toc",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/today": {
         "title": "Why Does My Paper Give the Wrong Date?",
         "path": "/help/today",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/trackback": {
         "title": "Trackbacks",
         "path": "/help/trackback",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/translations": {
         "title": "Translations",
         "path": "/help/translations",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/type1linux": {
         "title": "Type 1 PostScript fonts on Linux",
         "path": "/help/type1linux",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/unpack": {
         "title": "Unpacking Retrieved Papers",
         "path": "/help/unpack",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/utilities": {
         "title": "Utilities for the E-Print World",
         "path": "/help/utilities",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/versions": {
         "title": "Submission Version Availability",
         "path": "/help/versions",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/view": {
         "title": "Viewing an article",
         "path": "/help/view",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/whynostamp": {
         "title": "Why doesn't my paper have the arXiv id stamped on the side of the page?",
         "path": "/help/whynostamp",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/whytex": {
         "title": "Why Submit the TeX/LaTeX Source?",
         "path": "/help/whytex",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/withdraw": {
         "title": "To withdraw an article",
         "path": "/help/withdraw",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       },
       "/help/api": {
@@ -1284,287 +1284,287 @@
           "/help/api/classify": {
             "title": "API for arXiv Categorization",
             "path": "/help/api/classify",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/api/faq": {
             "title": "arXiv API FAQ",
             "path": "/help/api/faq",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/api/user-manual": {
             "title": "arXiv API User's Manual",
             "path": "/help/api/user-manual",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           }
         },
         "path": "/help/api",
         "title": "arXiv API",
-        "modified": "2019-01-04T22:05:42"
+        "modified": "2019-01-04T22:05:42+00:00"
       },
       "/help/bitmap": {
         "children": {
           "/help/bitmap/advanced": {
             "title": "Advanced Bitmapping",
             "path": "/help/bitmap/advanced",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/bitmap/faq": {
             "title": "Frequently Asked Questions",
             "path": "/help/bitmap/faq",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/bitmap/problems": {
             "title": "Possible Problems",
             "path": "/help/bitmap/problems",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/bitmap/procedure": {
             "title": "What is the easiest way to do bitmapping?",
             "path": "/help/bitmap/procedure",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/bitmap/software": {
             "title": "Useful Software",
             "path": "/help/bitmap/software",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           }
         },
         "path": "/help/bitmap",
         "title": "Bitmapping Figures",
-        "modified": "2019-01-04T22:05:42"
+        "modified": "2019-01-04T22:05:42+00:00"
       },
       "/help/faq": {
         "children": {
           "/help/faq/aaclass": {
             "title": "LaTeX2e class for Astronomy & Astrophysics",
             "path": "/help/faq/aaclass",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/amslatex2000": {
             "title": "AMS LaTeX packages and AMS Journal styles",
             "path": "/help/faq/amslatex2000",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/browsergunzip": {
             "title": "Downloaded `.gz` Files that are not Gzipped",
             "path": "/help/faq/browsergunzip",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/cache": {
             "title": "Caching accesses to arXiv.org",
             "path": "/help/faq/cache",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/citelinks": {
             "title": "Why do my citations appear in long form [1,2,3,4] instead of short form [1-4]?",
             "path": "/help/faq/citelinks",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/doublesubscript": {
             "title": "Examples of TeX Double Subscripts",
             "path": "/help/faq/doublesubscript",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/dvips": {
             "title": "Papersize/Layout Problems: Margins are Different and/or Text is Truncated",
             "path": "/help/faq/dvips",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/feynmf": {
             "title": "Using Feynmf on arXiv",
             "path": "/help/faq/feynmf",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/freefonts": {
             "title": "Proprietary fonts and/or their free equivalents",
             "path": "/help/faq/freefonts",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/landscape": {
             "title": "How to Prepare Pages for Landscape Printout",
             "path": "/help/faq/landscape",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/mistakes": {
             "title": "Common Mistakes that cause Automated Processing to Fail",
             "path": "/help/faq/mistakes",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/multilang": {
             "title": "Submissions in Languages Other Than English and Multiple-Language Submissions",
             "path": "/help/faq/multilang",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/pd1enc": {
             "title": "Why do my user defined symbols (e.g., `\\i, \\l, \\L, \\o, \\ae,` etc.) display incorrectly in the processed document?",
             "path": "/help/faq/pd1enc",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/pdfrotate": {
             "title": "Why are some pages in the generated PDF file rotated?",
             "path": "/help/faq/pdfrotate",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/psbad": {
             "title": "Why are there Problems with my PostScript File?",
             "path": "/help/faq/psbad",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/psjunk": {
             "title": "Why is my PostScript File so Large?",
             "path": "/help/faq/psjunk",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/pstricks": {
             "title": "Using PSTricks on arXiv",
             "path": "/help/faq/pstricks",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/references": {
             "title": "References to and in arXiv Documents",
             "path": "/help/faq/references",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/revtex": {
             "title": "Status of REVTeX 4 and REVTeX 4.1 support",
             "path": "/help/faq/revtex",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/srcfaq": {
             "title": "Nota Bene (updated 30 Jun '97)",
             "path": "/help/faq/srcfaq",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/faq/statfaq": {
             "title": "Frequently Asked Questions on Public Statistics",
             "path": "/help/faq/statfaq",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           }
         },
         "path": "/help/faq",
         "title": "Frequently Asked Questions (FAQ)",
-        "modified": "2019-01-04T22:05:42"
+        "modified": "2019-01-04T22:05:42+00:00"
       },
       "/help/hypertex": {
         "children": {
           "/help/hypertex/bugs": {
             "title": "ToBeDone",
             "path": "/help/hypertex/bugs",
-            "modified": "2019-01-16T15:37:57",
+            "modified": "2019-01-16T15:37:57+00:00",
             "children": {}
           },
           "/help/hypertex/extensions": {
             "title": "Hypertex Extensions",
             "path": "/help/hypertex/extensions",
-            "modified": "2019-01-16T13:12:36",
+            "modified": "2019-01-16T13:12:36+00:00",
             "children": {}
           },
           "/help/hypertex/bibstyles": {
             "title": "BibTeX and Eprints",
             "path": "/help/hypertex/bibstyles",
-            "modified": "2019-01-16T13:12:36",
+            "modified": "2019-01-16T13:12:36+00:00",
             "children": {}
           },
           "/help/hypertex/binaries": {
             "title": "xhdvi precompiled binaries",
             "path": "/help/hypertex/binaries",
-            "modified": "2019-01-16T13:12:36",
+            "modified": "2019-01-16T13:12:36+00:00",
             "children": {}
           },
           "/help/hypertex/X": {
             "title": "External URL's under X",
             "path": "/help/hypertex/X",
-            "modified": "2019-01-16T13:12:36",
+            "modified": "2019-01-16T13:12:36+00:00",
             "children": {}
           }
         },
         "path": "/help/hypertex",
         "title": "HyperTeX FAQ",
-        "modified": "2019-01-16T13:12:36"
+        "modified": "2019-01-16T13:12:36+00:00"
       },
       "/help/oa": {
         "children": {
           "/help/oa/arXiv_meta_format": {
             "title": "arXiv meta-data format",
             "path": "/help/oa/arXiv_meta_format",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/oa/dataPolicy": {
             "title": "Policy for full-content harvesting",
             "path": "/help/oa/dataPolicy",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/oa/metadataPolicy": {
             "title": "Policy for metadata harvesting",
             "path": "/help/oa/metadataPolicy",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/oa/rfc1807": {
             "title": "RFC 1807. A Format for Bibliographic Records",
             "path": "/help/oa/rfc1807",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/oa/sfc_data_provider": {
             "title": "Open Archives / Santa Fe Convention: information about this data provider",
             "path": "/help/oa/sfc_data_provider",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           },
           "/help/oa/sfc_oams": {
             "title": "the Santa Fe Convention: the Open Archives Metadata Set",
             "path": "/help/oa/sfc_oams",
-            "modified": "2019-01-04T22:05:42",
+            "modified": "2019-01-04T22:05:42+00:00",
             "children": {}
           }
         },
         "path": "/help/oa",
         "title": "Open Archives Initiative (OAI)",
-        "modified": "2019-01-04T22:05:42"
+        "modified": "2019-01-04T22:05:42+00:00"
       }
     },
     "title": "arXiv Help Contents",
     "path": "/help",
-    "modified": "2019-01-25T17:14:29"
+    "modified": "2019-01-25T17:14:29+00:00"
   },
   "/": {
     "children": {
       "/showcase": {
         "title": "arXiv Labs showcase",
         "path": "https://labs.arxiv.org/showcase",
-        "modified": "2019-01-04T22:05:42",
+        "modified": "2019-01-04T22:05:42+00:00",
         "children": {}
       }
     },

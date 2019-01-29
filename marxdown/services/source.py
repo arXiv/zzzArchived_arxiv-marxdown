@@ -3,6 +3,7 @@
 import os
 
 from datetime import datetime
+from pytz import UTC
 import frontmatter
 import subprocess
 from functools import lru_cache as memoize
@@ -33,8 +34,9 @@ def _get_repo(source_path: str) -> git.Repo:
 def _get_mtime(source_path: str, page_path: str) -> datetime:
     path = get_path_for_page(page_path).split(get_repo_path(source_path), 1)[1].lstrip("/")
     repo = _get_repo(source_path)
-    last_commit = list(repo.iter_commits(paths=path, max_count=1))[0]
-    return datetime.utcfromtimestamp(last_commit.committed_date)
+    commit = list(repo.iter_commits(paths=path, max_count=1))[0]
+    mt = datetime.utcfromtimestamp(commit.committed_date).replace(tzinfo=UTC)
+    return mt
 
 
 def get_source_path() -> str:
