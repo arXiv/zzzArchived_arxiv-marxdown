@@ -114,8 +114,11 @@ def create_site_map(spec_file: str, out_file: str) -> None:
             build.build_site(False)
             subtree = site.get_tree()
             if "server" in spec:
-                subtree = {key: _paths_to_urls(spec["server"], part)
-                           for key, part in subtree.items()}
+                subtree = {
+                    f"{spec['server']}{key}":
+                        _paths_to_urls(spec["server"], part)
+                    for key, part in subtree.items()
+                }
             tree.update(subtree)
 
     # Write the tree to a JSON document. This is used to serve the sitemap.
@@ -199,9 +202,10 @@ def _paths_to_urls(server: str, tree_part: SiteTreePart) -> SiteTreePart:
     """Reformat paths in a :const:`SiteTreePart` using a ``server`` URL."""
     tree_part["path"] = f"{server}{tree_part['path']}"
     if "children" in tree_part:
-        tree_part["children"] = {key: _paths_to_urls(server, child)
-                                 for key, child
-                                 in tree_part["children"].items()}
+        tree_part["children"] = {
+            f"{server}{key}": _paths_to_urls(server, child)
+            for key, child in tree_part["children"].items()
+        }
     return tree_part
 
 

@@ -1,5 +1,34 @@
 {
-  "routes": [
-    {"pattern": "/foo/path",  "title": "Foo: Path"}
-  ]
+  "/help": {
+    "children": {
+      "/help/foo": {
+        "title": "The foo file",
+        "path": "/help/foo",
+        "modified": "2019-01-04T22:05:42+00:00",
+        "children": {
+          "/help/foo/bar": {
+            "title": "The foo bar file",
+            "path": "/help/foo/bar",
+            "modified": "2019-01-04T22:05:42+00:00",
+            "children": {}
+          }
+        }
+      }
+    },
+    "path": "/help",
+    "title": "Help!",
+    "modified": "2019-01-04T22:05:42+00:00"
+  },
+  "https://labs.arxiv.org/showcase": {
+    "children": {
+      "/showcase": {
+        "title": "arXiv Labs showcase",
+        "path": "https://labs.arxiv.org/showcase",
+        "modified": "2019-01-04T22:05:42+00:00",
+        "children": {}
+      }
+    },
+    "title": "arXiv Labs",
+    "path": "https://labs.arxiv.org/"
+  }
 }

@@ -4,8 +4,7 @@ from typing import Dict, Callable
 from urllib.parse import urljoin, urlparse, parse_qs, urlencode, urlunparse
 from werkzeug.urls import Href, url_encode, url_parse, url_unparse, url_encode
 
-from flask import Blueprint, render_template_string, request, \
-    render_template, Response, current_app, url_for
+from flask import Blueprint, request, render_template, Response, current_app
 import jinja2
 from werkzeug.exceptions import NotFound
 
@@ -20,8 +19,10 @@ blueprint = Blueprint('sitemap', __name__, url_prefix='')
 
 @blueprint.route('/sitemap_index.xml', methods=['GET'])
 def get_xml_sitemap() -> Response:
+    urlset_path = current_app.config['URLSET_PATH']
+    urlset = sitemap.load_urlset(request.url_root, urlset_path)
     return Response(
-        serialize.sitemap_xml(sitemap.load_urlset(request.url_root)),
+        serialize.sitemap_xml(urlset),
         content_type="application/xml"
     )
 

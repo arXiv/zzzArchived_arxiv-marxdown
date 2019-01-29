@@ -32,7 +32,8 @@ def sitemap_xml(urlset: URLSet) -> str:
     root = etree.Element("urlset", xmlns=SITEMAPS_NAMESPACE)
     for url in iter_urls(urlset):
         root.append(url_xml(url))
-    return etree.tostring(root, xml_declaration=True, encoding="UTF-8")
+    return etree.tostring(root, xml_declaration=True, encoding="UTF-8",
+                          pretty_print=True)
 
 
 def iter_urls(urlset: URLSet) -> Iterable[URL]:

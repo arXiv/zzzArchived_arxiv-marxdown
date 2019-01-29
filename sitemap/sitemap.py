@@ -45,9 +45,8 @@ class URLDecoder(ISO8601JSONDecoder):
         return super(URLDecoder, self).object_hook(data, **extra)
 
 
-def load_urlset(url_root: str) -> URLSet:
+def load_urlset(url_root: str, urlset_path: str) -> URLSet:
     """Load a :const:`URLSet` from a JSON document."""
-    urlset_path = get_application_config()['URLSET_PATH']
     with open(urlset_path) as f:
         data: URLSet = json.load(f, cls=URLDecoder, url_root=url_root)
     return data
