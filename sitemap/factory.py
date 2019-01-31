@@ -18,8 +18,8 @@ def create_web_app() -> Flask:
     app.config.from_object(config)
 
     Base(app)
-    s3.init_app(app)
 
     app.register_blueprint(routes.blueprint)     # Provides base templates.
+    s3.init_app(app)
 
     return app
