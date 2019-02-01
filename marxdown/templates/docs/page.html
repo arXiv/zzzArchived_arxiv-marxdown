@@ -31,4 +31,7 @@
 {% block page_content %}
   {% block markdown_content %}
   {% endblock %}
+  <section class="section has-text-centered is-size-7">
+    Version <a href="{{ version_url }}">{{ version }}</a>. Last modified <a href="{{ source_url }}">{{ modified|format_datetime }}</a>.
+  </section>
 {% endblock page_content %}

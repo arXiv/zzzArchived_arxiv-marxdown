@@ -1,7 +1,7 @@
 """API for loading content from a markdown site source."""
 
 import os
-
+import re
 from datetime import datetime
 from pytz import UTC
 import frontmatter
@@ -13,6 +13,9 @@ import git
 from arxiv.base.globals import get_application_config as config
 
 from ..domain import SourcePage
+
+GIT_REF = re.compile(r"git@github\.com:([^\.]+)\.git")
+GITHUB_COM = "https://github.com"
 
 
 @memoize()
@@ -31,12 +34,49 @@ def _get_repo(source_path: str) -> git.Repo:
     return git.Repo(get_repo_path(source_path))
 
 
-def _get_mtime(source_path: str, page_path: str) -> datetime:
-    path = get_path_for_page(page_path).split(get_repo_path(source_path), 1)[1].lstrip("/")
+@memoize()
+def _get_repo_name(source_path: str) -> str:
     repo = _get_repo(source_path)
-    commit = list(repo.iter_commits(paths=path, max_count=1))[0]
+    return GIT_REF.match(list(repo.remotes[0].urls)[0]).groups()[0]
+
+
+@memoize()
+def _get_path_in_repo(source_path: str, page_path: str) -> str:
+    repo_path = get_repo_path(source_path)
+    return get_path_for_page(page_path).split(repo_path, 1)[1].lstrip("/")
+
+
+@memoize()
+def _get_last_commit(source_path: str, page_path: str) -> git.Commit:
+    fpath = _get_path_in_repo(source_path, page_path)
+    repo = _get_repo(source_path)
+    commit: git.Commit = list(repo.iter_commits(paths=fpath, max_count=1))[0]
+    return commit
+
+
+def _get_mtime(source_path: str, page_path: str) -> datetime:
+    commit = _get_last_commit(source_path, page_path)
     mt = datetime.utcfromtimestamp(commit.committed_date).replace(tzinfo=UTC)
     return mt
+
+
+@memoize()
+def _get_last_version(source_path: str) -> str:
+    repo = _get_repo(source_path)
+    return repo.tags[-1].name
+
+
+@memoize()
+def _get_last_modified_url(source_path: str, page_path: str) -> str:
+    rev = _get_last_commit(source_path, page_path).name_rev[:8]
+    fpath = _get_path_in_repo(source_path, page_path)
+    return f"{GITHUB_COM}/{_get_repo_name(source_path)}/tree/{rev}/{fpath}"
+
+
+@memoize()
+def _get_last_version_url(source_path: str) -> str:
+    version = _get_last_version(source_path)
+    return f"{GITHUB_COM}/{_get_repo_name(source_path)}/releases/tag/{version}"
 
 
 def get_source_path() -> str:
@@ -87,9 +127,13 @@ def load_page(page_path: str, parents: bool = True) -> SourcePage:
     else:
         parents = []
     metadata = {k: v for k, v in page_data.metadata.items()}
+    source_path = get_source_path()
     metadata['parents'] = parents
     metadata['title'] = _get_title(page_data, page_path)
-    metadata['modified'] = _get_mtime(get_source_path(), page_path)
+    metadata['modified'] = _get_mtime(source_path, page_path)
+    metadata['version'] = _get_last_version(source_path)
+    metadata['source_url'] = _get_last_modified_url(source_path, page_path)
+    metadata['version_url'] = _get_last_version_url(source_path)
 
     return SourcePage(
         page_path=page_path,
