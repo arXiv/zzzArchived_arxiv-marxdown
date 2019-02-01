@@ -14,12 +14,11 @@ def create_web_app() -> Flask:
     """Initialize an instance of the sitemap application."""
     from . import config
 
-    app = Flask(__name__)
+    app = Flask('sitemap')
     app.config.from_object(config)
 
     Base(app)
 
     app.register_blueprint(routes.blueprint)     # Provides base templates.
     s3.init_app(app)
-
     return app

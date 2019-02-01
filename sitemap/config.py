@@ -44,3 +44,4 @@ AWS_REGION = os.environ.get('AWS_REGION', 'us-east-1')
 
 
 URLSET_PATH = os.environ.get('URLSET_PATH', '')
+APP_VERSION = "0.1"

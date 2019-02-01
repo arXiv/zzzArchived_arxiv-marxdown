@@ -20,7 +20,8 @@ See `https://www.sitemaps.org/protocol.html`_. For details.
 """
 
 from typing import Iterable
-from lxml import etree
+# from lxml import etree    # Issues with lxml version in mod_wsgi. :-(
+from xml.etree import ElementTree as etree
 
 from .domain import URLSet, URL
 
@@ -32,8 +33,10 @@ def sitemap_xml(urlset: URLSet) -> str:
     root = etree.Element("urlset", xmlns=SITEMAPS_NAMESPACE)
     for url in iter_urls(urlset):
         root.append(url_xml(url))
-    return etree.tostring(root, xml_declaration=True, encoding="UTF-8",
-                          pretty_print=True)
+    return etree.tostring(root, encoding="UTF-8")
+    # If we ever get to use lxml....
+    # xml_declaration=True
+    # pretty_print=True
 
 
 def iter_urls(urlset: URLSet) -> Iterable[URL]:

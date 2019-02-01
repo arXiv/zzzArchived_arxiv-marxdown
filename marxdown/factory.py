@@ -14,7 +14,7 @@ def create_web_app() -> Flask:
     """Initialize an instance of the static pages application."""
     from . import config
 
-    app = Flask(__name__)
+    app = Flask(config.SITE_NAME)
     app.config.from_object(config)
 
     Base(app)

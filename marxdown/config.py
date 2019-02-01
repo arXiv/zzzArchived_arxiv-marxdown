@@ -48,3 +48,4 @@ SITE_NAME = os.environ.get('SITE_NAME', 'arxiv')
 SITE_URL_PREFIX = os.environ.get('SITE_URL_PREFIX', '/')
 SITE_HUMAN_NAME = os.environ.get('SITE_HUMAN_NAME', 'arXiv Static Pages')
 SITE_SEARCH_ENABLED = bool(int(os.environ.get('SITE_SEARCH_ENABLED', 1)))
+APP_VERSION = "0.1"
