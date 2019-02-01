@@ -12,7 +12,7 @@
   {% if config.SITE_SEARCH_ENABLED %}
   <form action="{{ url_for(site_name + '.search')}}" method="GET" class="form">
     <div class="field has-addons" style="justify-content: flex-end;">
-      <div class="control">
+      <div class="control" style="z-index: 1000">
         <label for="q" class="is-sr-only">Search {{ site_human_name }}</label>
         <input
           class="input is-small"
