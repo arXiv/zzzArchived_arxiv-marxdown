@@ -4,7 +4,7 @@
     <article class="column is-half">
       <div class="media">
         <div class="media-left is-hidden-mobile">
-          <p class="image is-96x96"><img style="border-radius: 50%" src="{{ url_for('.static', filename=person.thumbnail) }}" alt="" /></p>
+          <p class="image is-96x96"><img style="border-radius: 50%" src="{{ url_for(config.SITE_NAME + '.static', filename=person.thumbnail) }}" alt="" /></p>
         </div>
         <div class="media-content">
           <p class="image is-48x48 is-hidden-tablet is-pulled-left" style=" margin-right: .5em; margin-top: 1.5em;"><img style="border-radius: 50%;" src="{{ url_for('.static', filename=person.thumbnail) }}" alt="" /></p>
