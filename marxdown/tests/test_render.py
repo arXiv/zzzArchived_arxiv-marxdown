@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, mock
 import re
 from .. import render
 
@@ -45,3 +45,10 @@ class TestEscapeBrackets(TestCase):
         expected = """<p>here is some {{ real_jinja() }}</p>"""
         self.assertEqual(render.render(raw), expected,
                          "Jinja marked as such is not replaced.")
+
+    def test_dont_escape_links(self):
+        raw = """here [is a link](to/somewhere.md)."""
+        expected = """<p>here <a href="{{ url_for('name.from_sitemap', page_path='to/somewhere') }}">is a link</a>.</p>"""
+        dereferencer = render.get_deferencer(mock.MagicMock(), "name")
+        self.assertEqual(render.render(raw, dereferencer), expected,
+                         "Injected url_for tags are not escaped")

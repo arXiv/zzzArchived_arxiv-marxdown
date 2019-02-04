@@ -95,23 +95,23 @@ def get_path_for_page(page_path: str) -> str:
 
 
 @memoize(maxsize=1024)
-def page_exists(page_path: str) -> bool:
+def page_exists(source_path: str, page_path: str) -> bool:
     """Check whether a source page exists."""
     return os.path.exists(get_path_for_page(page_path))
 
 
-def get_parents(page_path: str) -> List[Dict[str, str]]:
+def get_parents(source_path: str, page_path: str) -> List[Dict[str, str]]:
     """Get the paths for a source page's parent pages."""
     path_parts = page_path.split('/')
     parents = []
     for i in range(1, len(path_parts)):
         path = '/'.join(path_parts[:i])
-        if page_exists(path):
-            parent_page = load_page(path, False)
+        if page_exists(source_path, path):
+            parent_page = load_page(source_path, path, False)
             parents.append({'page_path': path,
                             'title': parent_page.title})
-        elif page_exists(f'{path}/index'):
-            parent_page = load_page(f'{path}/index', False)
+        elif page_exists(source_path, f'{path}/index'):
+            parent_page = load_page(source_path, f'{path}/index', False)
             parents.append({'page_path': f'{path}/index',
                             'title': parent_page.title,
                             'path_for_reference': path})
@@ -119,15 +119,15 @@ def get_parents(page_path: str) -> List[Dict[str, str]]:
 
 
 @memoize(maxsize=1024)
-def load_page(page_path: str, parents: bool = True) -> SourcePage:
+def load_page(source_path: str, page_path: str, parents: bool = True) \
+        -> SourcePage:
     """Load content and data for a source page."""
     page_data = frontmatter.load(get_path_for_page(page_path))
     if parents:
-        parents = get_parents(page_path)
+        parents = get_parents(source_path, page_path)
     else:
         parents = []
     metadata = {k: v for k, v in page_data.metadata.items()}
-    source_path = get_source_path()
     metadata['parents'] = parents
     metadata['title'] = _get_title(page_data, page_path)
     metadata['modified'] = _get_mtime(source_path, page_path)
@@ -153,7 +153,7 @@ def load_pages() -> Iterable[SourcePage]:
             if filename.endswith('.md'):
                 full_path = os.path.join(dirpath, filename)
                 page_path = full_path.split(source_path, 1)[1][1:-3]
-                yield load_page(page_path)
+                yield load_page(source_path, page_path)
 
 
 def load_static_paths() -> List[Tuple[str, str]]:
