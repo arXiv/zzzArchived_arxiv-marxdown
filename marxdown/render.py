@@ -39,7 +39,7 @@ def render(content: str, dereferencer: Optional[Callable] = None) -> str:
     if dereferencer is not None:
         extensions.append(ReferenceExtension('a', 'href', dereferencer))
         extensions.append(ReferenceExtension('img', 'src', dereferencer))
-    return markdown(escape_braces(content), extensions=extensions)
+    return escape_braces(markdown(content, extensions=extensions))
 
 
 def escape_braces(content: str) -> str:
