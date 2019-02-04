@@ -206,8 +206,8 @@ def load_page_content(page_path: str) -> str:
     if get_pages_path() not in os.path.normpath(get_path_for_page(page_path)):
         raise PageNotFound(f'Page {page_path} not found')
 
-    with open(get_path_for_page(page_path), 'r') as f:
-        return f.read()
+    with open(get_path_for_page(page_path), 'rb') as f:
+        return f.read().decode('utf-8')
 
 
 def load_metadata(page_path: str) -> dict:
