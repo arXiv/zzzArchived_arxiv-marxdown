@@ -7,6 +7,7 @@ class TestEscapeBrackets(TestCase):
     """Braces are common in TeX; we should not confuse them with Jinja."""
 
     def test_escape_bibtex(self):
+        """Indeed, BibTeX has lots of braces; we should escape those."""
         raw = """
             like this,
             ```
@@ -34,5 +35,13 @@ class TestEscapeBrackets(TestCase):
              {{ '}' }}
             ```
             </pre></div>"""
-        self.assertEqual(re.sub("\s+", "", render.render(raw)),
-                         re.sub("\s+", "", expected))
+        self.assertEqual(re.sub(r"\s+", "", render.render(raw)),
+                         re.sub(r"\s+", "", expected),
+                         "Braces in the BibTeX are replaced")
+
+    def test_dont_escape_jinja(self):
+        """But we still need Jinja support; so look out for that."""
+        raw = """here is some $jinja {{ real_jinja() }} jinja$"""
+        expected = """<p>here is some {{ real_jinja() }}</p>"""
+        self.assertEqual(render.render(raw), expected,
+                         "Jinja marked as such is not replaced.")

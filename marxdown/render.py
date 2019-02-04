@@ -13,6 +13,8 @@ from .domain import SourcePage
 
 logger = logging.getLogger(__name__)
 
+ALLOWED_JINJA = r"\$jinja\s*{{ '([{}%]+)' }}([^{]+){{ '([{}%]+)' }}\s*jinja\$"
+
 
 def render(content: str, dereferencer: Optional[Callable] = None) -> str:
     """
@@ -48,7 +50,11 @@ def escape_braces(content: str) -> str:
 
     Otherwise, they are treated as Jinja2 syntax.
     """
-    return re.sub(r"([{}%]+)", r"{{ '\g<1>' }}", content)
+    def repl(match):
+        print(match.groups())
+        return "foo"
+    return re.sub(ALLOWED_JINJA, r"\1\2\3",
+                  re.sub(r"([{}%]+)", r"{{ '\g<1>' }}", content))
 
 
 class ReferenceProcessor(Treeprocessor):
