@@ -125,10 +125,8 @@ def get_linker(page: SourcePage, site_name: str) -> Callable:
 
 
 def get_deferencer(page: SourcePage, site_name: str) -> Callable:
-    linker = get_linker(page, site_name)
-
     def link_dereferencer(href: str) -> str:
-        route, kwarg, target_path = linker(href)
+        route, kwarg, target_path = get_linker(page, site_name)(href)
         if kwarg is None:
             return route
         return "$jinja {{ url_for('%s', %s='%s') }} jinja$" \
