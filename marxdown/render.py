@@ -1,6 +1,7 @@
 """Responsible for rendering markdown content to HTML."""
 
 from typing import Callable, Optional, Mapping, Union, Tuple
+import re
 import xml.etree.ElementTree as ET
 from markdown import markdown, Markdown
 from markdown.extensions import Extension
@@ -38,7 +39,16 @@ def render(content: str, dereferencer: Optional[Callable] = None) -> str:
     if dereferencer is not None:
         extensions.append(ReferenceExtension('a', 'href', dereferencer))
         extensions.append(ReferenceExtension('img', 'src', dereferencer))
-    return markdown(content, extensions=extensions)
+    return markdown(escape_braces(content), extensions=extensions)
+
+
+def escape_braces(content: str) -> str:
+    """
+    Curly braces in content must be escaped.
+
+    Otherwise, they are treated as Jinja2 syntax.
+    """
+    return re.sub(r"([{}%]+)", r"{{ '\g<1>' }}", content)
 
 
 class ReferenceProcessor(Treeprocessor):
@@ -109,8 +119,10 @@ def get_linker(page: SourcePage, site_name: str) -> Callable:
 
 
 def get_deferencer(page: SourcePage, site_name: str) -> Callable:
+    linker = get_linker(page, site_name)
+
     def link_dereferencer(href: str) -> str:
-        route, kwarg, target_path = get_linker(page, site_name)(href)
+        route, kwarg, target_path = linker(href)
         if kwarg is None:
             return route
         return "{{ url_for('%s', %s='%s') }}" % (route, kwarg, target_path)
