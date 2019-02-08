@@ -68,7 +68,8 @@ def search():
     else:
         results = None
     site_name = site.get_site_name()
-    context = dict(results=results, q=q, site_name=site_name)
+    title = f"Search {site.get_site_human_short_name()}"
+    context = dict(results=results, q=q, site_name=site_name, pagetitle=title)
     try:
         return render_template(f'{site_name}/search.html', **context)
     except jinja2.exceptions.TemplateNotFound:
