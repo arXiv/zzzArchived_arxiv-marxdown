@@ -18,6 +18,7 @@ TEMPLATE_ROOT = os.environ.get('TEMPLATE_ROOT', 'templates')
 EXTERNAL_URL_SCHEME = os.environ.get('EXTERNAL_URL_SCHEME', 'https')
 BASE_SERVER = os.environ.get('BASE_SERVER', 'arxiv.org')
 URLS = [
+    ("home", "/", BASE_SERVER),
     ("archive", "/archive/<archive>", BASE_SERVER),
     ("search_box", "/search", BASE_SERVER),
     ("clickthrough", "/ct", BASE_SERVER),
@@ -46,6 +47,7 @@ SOURCE_PATH = os.environ.get('SOURCE_PATH')
 BUILD_PATH = os.environ.get('BUILD_PATH')
 SITE_NAME = os.environ.get('SITE_NAME', 'arxiv')
 SITE_URL_PREFIX = os.environ.get('SITE_URL_PREFIX', '/')
+SITE_HUMAN_SHORT_NAME = os.environ.get('SITE_HUMAN_SHORT_NAME', 'Static')
 SITE_HUMAN_NAME = os.environ.get('SITE_HUMAN_NAME', 'arXiv Static Pages')
 SITE_SEARCH_ENABLED = bool(int(os.environ.get('SITE_SEARCH_ENABLED', 1)))
 APP_VERSION = "0.1"
