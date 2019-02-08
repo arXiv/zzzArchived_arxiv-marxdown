@@ -33,11 +33,14 @@ def from_sitemap(page_path: str = ''):
         code = page.metadata['response'].get('status', status.HTTP_200_OK)
         if 'location' in page.metadata['response']:
             linker = render.get_linker(page, site.get_site_name())
-            route, kwarg, name = linker(page.metadata['response']['location'])
+            route, kwarg, name, anchor = linker(page.metadata['response']['location'])
             if kwarg is None:
                 location = route
             else:
-                location = this_url_for(route, **{kwarg: name})
+                if anchor is not None:
+                    location = this_url_for(route, **{kwarg: name}, _anchor=anchor)
+                else:
+                    location = this_url_for(route, **{kwarg: name})
             headers['Location'] = location
         deleted = page.metadata['response'].get('deleted', False)
         if deleted:
