@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 markdown = "*"
-pyyaml = "*"
+pyyaml = "==4.2b4"
 whoosh = "*"
 bleach = "*"
 uwsgi = "*"
@@ -21,6 +21,7 @@ arxiv-auth = "==0.2.3"
 mypy-extensions = "*"
 gitpython = "*"
 lxml = "*"
+py-gfm = "*"
 
 [dev-packages]
 "nose2" = "*"

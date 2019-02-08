@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 from markdown import markdown, Markdown
 from markdown.extensions import Extension
 from markdown.treeprocessors import Treeprocessor
+from mdx_partial_gfm import PartialGithubFlavoredMarkdownExtension
 
 from arxiv.base import logging
 
@@ -37,7 +38,8 @@ def render(content: str, dereferencer: Optional[Callable] = None) -> str:
         Rendered HTML.
 
     """
-    extensions = ['tables', 'fenced_code', 'codehilite', 'toc', 'attr_list']
+    extensions = ['tables', 'fenced_code', 'codehilite', 'toc', 'attr_list',
+                  PartialGithubFlavoredMarkdownExtension()]
     if dereferencer is not None:
         extensions.append(ReferenceExtension('a', 'href', dereferencer))
         extensions.append(ReferenceExtension('img', 'src', dereferencer))
