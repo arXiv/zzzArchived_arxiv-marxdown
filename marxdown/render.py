@@ -103,11 +103,13 @@ class ReferenceExtension(Extension):
 
 
 def get_linker(page: SourcePage, site_name: str) -> Callable:
-    def linker(href: str) -> Tuple[str, str, str]:
+    def linker(href: str) -> Tuple[str, str, str, Optional[str]]:
         if not href or '://' in href or href.startswith('/') \
                 or href.startswith('#'):
-            return href, None, None
-
+            return href, None, None, None
+        anchor = None
+        if '#' in href:
+            href, anchor = href.split('#', 1)
         if href.endswith('.md'):
             path = href[:-3]
             route = f'{site_name}.from_sitemap'
@@ -122,15 +124,18 @@ def get_linker(page: SourcePage, site_name: str) -> Callable:
             kwarg = 'filename'
         base_path = '/'.join(page.page_path.split('/')[:-1])
         target_path = '/'.join([base_path, path.rstrip('/')]).lstrip('/')
-        return route, kwarg, target_path
+        return route, kwarg, target_path, anchor
     return linker
 
 
 def get_deferencer(page: SourcePage, site_name: str) -> Callable:
     def link_dereferencer(href: str) -> str:
-        route, kwarg, target_path = get_linker(page, site_name)(href)
+        route, kwarg, target_path, anchor = get_linker(page, site_name)(href)
         if kwarg is None:
             return route
+        if anchor is not None:
+            return "$jinja {{ url_for('%s', %s='%s', _anchor='%s') }} jinja$" \
+                % (route, kwarg, target_path, anchor)
         return "$jinja {{ url_for('%s', %s='%s') }} jinja$" \
             % (route, kwarg, target_path)
     return link_dereferencer
