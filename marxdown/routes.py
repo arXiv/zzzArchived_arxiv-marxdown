@@ -48,7 +48,8 @@ def from_sitemap(page_path: str = ''):
         'page_path': page_path,
         'page': page,
         'site_name': site.get_site_name(),
-        'url_for': this_url_for
+        'url_for': this_url_for,
+        'pagetitle': page.metadata['title']     # ARXIVNG-1697
     })
     content = render_template_string(page.content, **context)
     return content, code, headers
