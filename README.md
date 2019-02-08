@@ -184,6 +184,19 @@ response:
 ---
 ```
 
+## Revision history
+
+You can insert the revision history for a page using the ``render_history()``
+macro. This is the commit history, with links to the corresponding source
+on GitHub.
+
+```
+### Revision history
+
+- 2018-02-26 - Current version 1 created.
+$jinja {{ render_history(history) }} jinja$
+```
+
 ## Sitemap application
 
 ### Build

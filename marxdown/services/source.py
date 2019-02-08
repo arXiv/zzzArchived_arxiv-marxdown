@@ -30,6 +30,15 @@ def get_repo_path(source_path: str) -> str:
 
 
 @memoize()
+def _get_tag_map(source_path: str) -> Dict:
+    tagmap = {}
+    repo = _get_repo(source_path)
+    for t in repo.tags:
+        tagmap.setdefault(repo.commit(t), []).append(t)
+    return tagmap
+
+
+@memoize()
 def _get_repo(source_path: str) -> git.Repo:
     return git.Repo(get_repo_path(source_path))
 
@@ -57,12 +66,27 @@ def _get_last_commit(source_path: str, page_path: str) -> Optional[git.Commit]:
     return commit
 
 
+def _get_revision_history(source_path: str, page_path: str) \
+        -> List[Tuple[str, datetime, str]]:
+    fpath = _get_path_in_repo(source_path, page_path)
+    repo = _get_repo(source_path)
+    return [
+        (
+            _github_url(source_path, c.name_rev.split()[0], page_path),
+            datetime.utcfromtimestamp(c.committed_date).replace(tzinfo=UTC),
+            c.message.strip()
+        )
+        for c in repo.iter_commits(paths=fpath)
+    ]
+
+
 def _get_mtime(source_path: str, page_path: str) -> datetime:
     commit = _get_last_commit(source_path, page_path)
     if commit is not None:  # Use the time of the last commit, if possible.
         mt = datetime.utcfromtimestamp(commit.committed_date)
     else:   # Just use the filesystem modified time.
-        mt = datetime.utcfromtimestamp(os.path.getmtime(get_path_for_page(page_path)))
+        path = get_path_for_page(page_path)
+        mt = datetime.utcfromtimestamp(os.path.getmtime(path))
     mt = mt.replace(tzinfo=UTC)     # Localize.
     return mt
 
@@ -73,13 +97,17 @@ def _get_last_version(source_path: str) -> str:
     return repo.tags[-1].name
 
 
+def _github_url(source_path, rev, page_path) -> str:
+    fpath = _get_path_in_repo(source_path, page_path)
+    return f"{GITHUB_COM}/{_get_repo_name(source_path)}/tree/{rev}/{fpath}"
+
+
 @memoize()
 def _get_last_modified_url(source_path: str, page_path: str) -> Optional[str]:
     commit = _get_last_commit(source_path, page_path)
     if commit is not None:
         rev = commit.name_rev[:8]
-        fpath = _get_path_in_repo(source_path, page_path)
-        return f"{GITHUB_COM}/{_get_repo_name(source_path)}/tree/{rev}/{fpath}"
+        return _github_url(source_path, rev, page_path)
     return None
 
 
@@ -144,6 +172,7 @@ def load_page(source_path: str, page_path: str, parents: bool = True) \
     metadata['version'] = _get_last_version(source_path)
     metadata['source_url'] = _get_last_modified_url(source_path, page_path)
     metadata['version_url'] = _get_last_version_url(source_path)
+    metadata['history'] = _get_revision_history(source_path, page_path)
 
     return SourcePage(
         page_path=page_path,
