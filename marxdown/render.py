@@ -1,6 +1,6 @@
 """Responsible for rendering markdown content to HTML."""
 
-from typing import Callable, Optional, Mapping, Union, Tuple
+from typing import Callable, Optional, Mapping, Union, Tuple, List
 import re
 import xml.etree.ElementTree as ET
 from markdown import markdown, Markdown
@@ -39,7 +39,8 @@ def render(content: str, dereferencer: Optional[Callable] = None) -> str:
 
     """
     extensions = ['tables', 'fenced_code', 'codehilite', 'toc', 'attr_list',
-                  PartialGithubFlavoredMarkdownExtension()]
+                  PartialGithubFlavoredMarkdownExtension(),
+                  StyleClassExtension("table", ["table", "is-striped"])]
     if dereferencer is not None:
         extensions.append(ReferenceExtension('a', 'href', dereferencer))
         extensions.append(ReferenceExtension('img', 'src', dereferencer))
@@ -57,6 +58,22 @@ def escape_braces(content: str) -> str:
         return "foo"
     return re.sub(ALLOWED_JINJA, r"\1\2\3",
                   re.sub(r"([{}%]+)", r"{{ '\g<1>' }}", content))
+
+
+class StyleClassProcessor(Treeprocessor):
+    """Adds CSS classes to elements."""
+
+    def __init__(self, tag: str, classes: List[str]) -> None:
+        """Set the target tag and classes to add."""
+        self.tag = tag
+        self.classes = classes
+
+    def run(self, root: ET.ElementTree) -> None:
+        """Add some CSS classes to a table when we find one."""
+        for child in root:
+            if child.tag == self.tag:
+                existing = child.attrib.get("class", "").split()
+                child.attrib["class"] = " ".join(existing + self.classes)
 
 
 class ReferenceProcessor(Treeprocessor):
@@ -100,6 +117,20 @@ class ReferenceExtension(Extension):
         """Add :class:`.ReferenceProcessor` to the markdown processor."""
         inst = ReferenceProcessor(self.tag, self.attr, self.dereferencer)
         md.treeprocessors[f'{self.tag}_{self.attr}_reference_processor'] = inst
+
+
+class StyleClassExtension(Extension):
+    """Adds :class:`.ReferenceProcessor` to the markdown processor."""
+
+    def __init__(self, tag: str, classes: List[str]) -> None:
+        """Set the link dereferencer for use during processing."""
+        self.tag = tag
+        self.classes = classes
+
+    def extendMarkdown(self, md: Markdown, md_globals: Mapping) -> None:
+        """Add :class:`.ReferenceProcessor` to the markdown processor."""
+        inst = StyleClassProcessor(self.tag, self.classes)
+        md.treeprocessors[f'{self.tag}_style_class_processor'] = inst
 
 
 def get_linker(page: SourcePage, site_name: str) -> Callable:
