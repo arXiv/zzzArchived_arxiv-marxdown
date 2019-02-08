@@ -3,6 +3,25 @@
 {% block addl_head %}
   <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/docs.css')}}" />
   <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/codehilite.css')}}" />
+  <script type="text/javascript" src="https://arxiv-org.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-2rg805/b/26/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=7a070c4b"></script>
+
+  <script type="text/javascript">
+  window.ATL_JQ_PAGE_PROPS =  {
+    "triggerFunction": function(showCollectorDialog) {
+      //Requires that jQuery is available!
+      $("#feedback-button").click(function(e) {
+        e.preventDefault();
+        showCollectorDialog();
+      });
+    },
+    fieldValues: {
+      "components": ["{{ config.JIRA_COMPONENT }}"],
+      "versions": ["{{ config.JIRA_VERSION }}"],
+      "customfield_11401": window.location.href
+    }
+  };
+  </script>
+
 {% endblock addl_head %}
 
 
@@ -39,4 +58,9 @@
   {% endblock page_content %}
 </div>
 
+<div class="level-right is-hidden-mobile">
+      <!-- feedback for mobile is moved to footer -->
+      <span class="help" style="display: inline-block;"><a href="{{ config.RELEASE_NOTES_URL }}">{{ site_human_name }} {{ config.RELEASE_NOTES_TEXT }}</a>&nbsp;&nbsp;</span>
+      <button class="button is-small" id="feedback-button">Feedback?</button>
+</div>
 {% endblock content %}
