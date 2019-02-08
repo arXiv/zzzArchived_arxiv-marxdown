@@ -47,16 +47,23 @@ def _get_path_in_repo(source_path: str, page_path: str) -> str:
 
 
 @memoize()
-def _get_last_commit(source_path: str, page_path: str) -> git.Commit:
+def _get_last_commit(source_path: str, page_path: str) -> Optional[git.Commit]:
     fpath = _get_path_in_repo(source_path, page_path)
     repo = _get_repo(source_path)
-    commit: git.Commit = list(repo.iter_commits(paths=fpath, max_count=1))[0]
+    commits = list(repo.iter_commits(paths=fpath, max_count=1))
+    if not commits:
+        return None
+    commit: git.Commit = commits[0]
     return commit
 
 
 def _get_mtime(source_path: str, page_path: str) -> datetime:
     commit = _get_last_commit(source_path, page_path)
-    mt = datetime.utcfromtimestamp(commit.committed_date).replace(tzinfo=UTC)
+    if commit is not None:  # Use the time of the last commit, if possible.
+        mt = datetime.utcfromtimestamp(commit.committed_date)
+    else:   # Just use the filesystem modified time.
+        mt = datetime.utcfromtimestamp(os.path.getmtime(get_path_for_page(page_path)))
+    mt = mt.replace(tzinfo=UTC)     # Localize.
     return mt
 
 
@@ -67,10 +74,13 @@ def _get_last_version(source_path: str) -> str:
 
 
 @memoize()
-def _get_last_modified_url(source_path: str, page_path: str) -> str:
-    rev = _get_last_commit(source_path, page_path).name_rev[:8]
-    fpath = _get_path_in_repo(source_path, page_path)
-    return f"{GITHUB_COM}/{_get_repo_name(source_path)}/tree/{rev}/{fpath}"
+def _get_last_modified_url(source_path: str, page_path: str) -> Optional[str]:
+    commit = _get_last_commit(source_path, page_path)
+    if commit is not None:
+        rev = commit.name_rev[:8]
+        fpath = _get_path_in_repo(source_path, page_path)
+        return f"{GITHUB_COM}/{_get_repo_name(source_path)}/tree/{rev}/{fpath}"
+    return None
 
 
 @memoize()

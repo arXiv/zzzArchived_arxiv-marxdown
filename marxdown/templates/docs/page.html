@@ -37,6 +37,6 @@
   {% block markdown_content %}
   {% endblock %}
   <aside class="has-text-centered" style="padding-top: 3rem;">
-    <p class="is-size-7">Version <a href="{{ version_url }}">{{ version }}</a>. Last modified <a href="{{ source_url }}">{{ modified|format_datetime }}</a>.</p>
+    <p class="is-size-7">Version <a href="{{ version_url }}">{{ version }}</a>. Last modified {% if source_url %}<a href="{{ source_url }}">{% endif %}{{ modified|format_datetime }}{% if source_url %}</a>{% endif %}.</p>
   </aside>
 {% endblock page_content %}
