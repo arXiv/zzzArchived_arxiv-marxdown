@@ -15,9 +15,16 @@ s3 = FlaskS3()
 
 
 def format_datetime(datestring: str) -> str:
+    """Render a date like ``Friday, January 01, 2019 at 22:05 US/Eastern``."""
     dt = dateutil.parser.parse(datestring)
     dt = dt.replace(tzinfo=timezone('US/Eastern'))
-    return dt.strftime("%A, %B %m, %Y at %I:%M%p Eastern")
+    return dt.strftime("%A, %B %m, %Y at %H:%M US/Eastern")
+
+
+def simepledate(datestring: str) -> str:
+    """Render a date like ``1992-05-02``."""
+    dt = dateutil.parser.parse(datestring)
+    return dt.strftime("%Y-%m-%d")
 
 
 def create_web_app() -> Flask:
@@ -37,5 +44,6 @@ def create_web_app() -> Flask:
         )
     )
     app.jinja_env.filters['format_datetime'] = format_datetime
+    app.jinja_env.filters['simepledate'] = simepledate
     s3.init_app(app)
     return app
