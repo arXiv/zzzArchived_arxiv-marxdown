@@ -100,6 +100,9 @@ def get_blueprint(site_path: str, with_search: bool = True) -> Blueprint:
     blueprint.context_processor(
         lambda: {'site_human_name': site.get_site_human_name()}
     )
+    blueprint.context_processor(
+        lambda: {'site_human_short_name': site.get_site_human_short_name()}
+    )
     return blueprint
 
 

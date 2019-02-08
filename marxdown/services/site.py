@@ -142,8 +142,13 @@ def get_url_prefix() -> str:
 
 
 def get_site_human_name() -> str:
-    """Get the URL prefix for this site."""
+    """Get the human name for this site."""
     return config().get('SITE_HUMAN_NAME', 'arXiv static pages')
+
+
+def get_site_human_short_name() -> str:
+    """Get the human short name for this site."""
+    return config().get('SITE_HUMAN_SHORT_NAME', 'Static')
 
 
 def get_data_path() -> str:

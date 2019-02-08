@@ -5,8 +5,13 @@
 <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li>
+      <a href="{{ url_for('home') }}">
+        arXiv
+      </a>
+    </li>
+    <li>
       <a href="{{ url_for(site_name + '.from_sitemap') }}">
-        {{ site_human_name }}
+        {{ site_human_short_name }}
       </a>
     </li>
     {% for parent in parents %}
