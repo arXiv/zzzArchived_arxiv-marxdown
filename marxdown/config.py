@@ -51,3 +51,9 @@ SITE_HUMAN_SHORT_NAME = os.environ.get('SITE_HUMAN_SHORT_NAME', 'Static')
 SITE_HUMAN_NAME = os.environ.get('SITE_HUMAN_NAME', 'arXiv Static Pages')
 SITE_SEARCH_ENABLED = bool(int(os.environ.get('SITE_SEARCH_ENABLED', 1)))
 APP_VERSION = "0.1"
+
+
+JIRA_VERSION = "14201"      # v0.1
+JIRA_COMPONENT = "16038"    # Static
+RELEASE_NOTES_URL = "https://"
+RELEASE_NOTES_TEXT = "v0.1 released 2019-02-11"
