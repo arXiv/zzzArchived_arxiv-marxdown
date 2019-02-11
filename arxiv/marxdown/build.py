@@ -1,12 +1,19 @@
+"""
+Builds the site from markdown source.
+
+TODO: consider click-ifying the CLI component.
+"""
 import os
 import shutil
+
 import bleach
+
+from arxiv.base.globals import get_application_config as config
+
 from .services import index, site, source
 from . import render
 from .domain import SourcePage, IndexablePage
-
-
-from arxiv.base.globals import get_application_config as config
+from .factory import create_web_app
 
 
 def generate_template(source_page: SourcePage, rendered_content: str) -> str:
@@ -78,3 +85,9 @@ def build_site(with_search: bool = True) -> None:
         print(f"Template: copy {template_path} to {target_path}")
         shutil.copy(source_path, target_path)
     print('Added templates')
+
+
+if __name__ == '__main__':
+    app = create_web_app()
+    with app.app_context():
+        build_site(app.config.get('SITE_SEARCH_ENABLED', True))

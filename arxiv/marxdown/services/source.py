@@ -11,8 +11,11 @@ from typing import NamedTuple
 from typing import Optional, List, Tuple, Iterable, Dict
 import git
 from arxiv.base.globals import get_application_config as config
+from arxiv.base import logging
 
 from ..domain import SourcePage
+
+logger = logging.getLogger(__name__)
 
 GIT_REF = re.compile(r"git@github\.com:([^\.]+)\.git")
 GITHUB_COM = "https://github.com"
@@ -20,6 +23,7 @@ GITHUB_COM = "https://github.com"
 
 @memoize()
 def get_repo_path(source_path: str) -> str:
+    logger.debug('Get repository path for %s', source_path)
     r = subprocess.run("git rev-parse --show-toplevel", cwd=source_path,
                        shell=True, stdout=subprocess.PIPE,
                        stderr=subprocess.PIPE)
@@ -30,33 +34,34 @@ def get_repo_path(source_path: str) -> str:
 
 
 @memoize()
-def _get_tag_map(source_path: str) -> Dict:
-    tagmap = {}
-    repo = _get_repo(source_path)
-    for t in repo.tags:
-        tagmap.setdefault(repo.commit(t), []).append(t)
-    return tagmap
-
-
-@memoize()
 def _get_repo(source_path: str) -> git.Repo:
+    logger.debug('Get repository for source path %s', source_path)
     return git.Repo(get_repo_path(source_path))
 
 
 @memoize()
-def _get_repo_name(source_path: str) -> str:
+def _get_repo_name(source_path: str) -> Optional[str]:
+    logger.debug('Get repository name for source path %s', source_path)
     repo = _get_repo(source_path)
-    return GIT_REF.match(list(repo.remotes[0].urls)[0]).groups()[0]
+    remotes = list(repo.remotes[0].urls)
+    if not remotes:
+        return None
+    match = GIT_REF.match(remotes[0])
+    if not match:
+        return None
+    return match.groups()[0]
 
 
 @memoize()
 def _get_path_in_repo(source_path: str, page_path: str) -> str:
+    logger.debug('Get page %s for source path %s', page_path, source_path)
     repo_path = get_repo_path(source_path)
     return get_path_for_page(page_path).split(repo_path, 1)[1].lstrip("/")
 
 
 @memoize()
 def _get_last_commit(source_path: str, page_path: str) -> Optional[git.Commit]:
+    logger.debug('Get last commit for %s in source %s', page_path, source_path)
     fpath = _get_path_in_repo(source_path, page_path)
     repo = _get_repo(source_path)
     commits = list(repo.iter_commits(paths=fpath, max_count=1))
@@ -67,7 +72,8 @@ def _get_last_commit(source_path: str, page_path: str) -> Optional[git.Commit]:
 
 
 def _get_revision_history(source_path: str, page_path: str) \
-        -> List[Tuple[str, datetime, str]]:
+        -> List[Tuple[Optional[str], datetime, str]]:
+    logger.debug('Get rev history for %s in source %s', page_path, source_path)
     fpath = _get_path_in_repo(source_path, page_path)
     repo = _get_repo(source_path)
     return [
@@ -81,6 +87,7 @@ def _get_revision_history(source_path: str, page_path: str) \
 
 
 def _get_mtime(source_path: str, page_path: str) -> datetime:
+    logger.debug('Get rev history for %s in source %s', page_path, source_path)
     commit = _get_last_commit(source_path, page_path)
     if commit is not None:  # Use the time of the last commit, if possible.
         mt = datetime.utcfromtimestamp(commit.committed_date)
@@ -93,17 +100,25 @@ def _get_mtime(source_path: str, page_path: str) -> datetime:
 
 @memoize()
 def _get_last_version(source_path: str) -> str:
+    logger.debug('Get last version for source %s', source_path)
     repo = _get_repo(source_path)
     return repo.tags[-1].name
 
 
-def _github_url(source_path, rev, page_path) -> str:
+def _github_url(source_path, rev, page_path) -> Optional[str]:
+    logger.debug('Generate GitHub URL for %s rev %s in source %s',
+                 page_path, rev, source_path)
     fpath = _get_path_in_repo(source_path, page_path)
-    return f"{GITHUB_COM}/{_get_repo_name(source_path)}/tree/{rev}/{fpath}"
+    repo_name = _get_repo_name(source_path)
+    if repo_name:
+        return f"{GITHUB_COM}/{repo_name}/tree/{rev}/{fpath}"
+    return None
 
 
 @memoize()
 def _get_last_modified_url(source_path: str, page_path: str) -> Optional[str]:
+    logger.debug('Generate last modified GitHub URL for %s in source %s',
+                 page_path, source_path)
     commit = _get_last_commit(source_path, page_path)
     if commit is not None:
         rev = commit.name_rev[:8]
@@ -112,9 +127,13 @@ def _get_last_modified_url(source_path: str, page_path: str) -> Optional[str]:
 
 
 @memoize()
-def _get_last_version_url(source_path: str) -> str:
+def _get_last_version_url(source_path: str) -> Optional[str]:
+    logger.debug('Generate last version GitHub URL for source %s', source_path)
     version = _get_last_version(source_path)
-    return f"{GITHUB_COM}/{_get_repo_name(source_path)}/releases/tag/{version}"
+    repo_name = _get_repo_name(source_path)
+    if repo_name:
+        return f"{GITHUB_COM}/{repo_name}/releases/tag/{version}"
+    return None
 
 
 def get_source_path() -> str:

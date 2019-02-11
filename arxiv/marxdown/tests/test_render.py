@@ -47,6 +47,7 @@ class TestEscapeBrackets(TestCase):
                          "Jinja marked as such is not replaced.")
 
     def test_dont_escape_links(self):
+        """Jinja for URL generation should not be escaped."""
         raw = """here [is a link](to/somewhere.md)."""
         expected = """<p>here <a href="{{ url_for('name.from_sitemap', page_path='to/somewhere') }}">is a link</a>.</p>"""
         dereferencer = render.get_deferencer(mock.MagicMock(), "name")

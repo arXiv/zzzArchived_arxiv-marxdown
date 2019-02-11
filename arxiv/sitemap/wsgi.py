@@ -1,7 +1,7 @@
 """Web Server Gateway Interface entry-point."""
 
 import os
-from sitemap.factory import create_web_app
+from .factory import create_web_app
 
 
 def application(environ, start_response):

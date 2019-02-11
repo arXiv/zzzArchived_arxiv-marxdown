@@ -1,6 +1,7 @@
 
 export REPO_ORG=arxiv
 export REPO_NAME=arxiv-docs
+export REPO_PATH=/dev/null
 export TARGET_REPO=git@github.com:${REPO_ORG}/${REPO_NAME}.git
 export SOURCE_REF=0.0.0
 export SOURCE_DIR=help
@@ -16,28 +17,40 @@ export NOCACHE=`date +%s`
 remote: Makefile
 	./bin/make_remote.sh && \
 		rm -rf ./source && mkdir ./source &&  \
-		cp -R ${TMP_DIR}/${SOURCE_DIR}/* ./source && \
+		cp -R ${TMP_DIR}/* ./source && \
+		cp -R ${REPO_PATH}/.git ./source && \
 		docker build ./ \
 			--build-arg NOCACHE=${NOCACHE} \
 			--build-arg VERSION=${SOURCE_REF} \
 			--build-arg BUILD_TIME=$(date) \
 			--build-arg SOURCE=${REPO_ORG}/${REPO_NAME} \
+			--build-arg SOURCE_DIR=${SOURCE_DIR} \
 			--build-arg SITE_NAME=${SITE_NAME} \
-			--build-arg SITE_HUMAN_NAME=${SITE_HUMAN_NAME} \
+			--build-arg SITE_HUMAN_NAME="${SITE_HUMAN_NAME}" \
 		 	-f ./Dockerfile -t ${IMAGE_NAME}:${SOURCE_REF} && \
 		rm -rf ./source
 
 local: Makefile
 	echo "Build locally at "${BUILD_TIME} && \
 	rm -rf ./source && mkdir ./source &&  \
-	cp -R ${SOURCE_DIR}/* ./source && \
+	cp -R ${REPO_PATH}/* ./source && \
+	cp -R ${REPO_PATH}/.git ./source && \
 	ls -la ./source && \
-	docker build ./ \
+	echo """docker build ./ \
 		--build-arg NOCACHE=${NOCACHE} \
 		--build-arg VERSION=${SOURCE_REF} \
 		--build-arg BUILD_TIME="${BUILD_TIME}" \
 		--build-arg SOURCE=${REPO_ORG}/${REPO_NAME} \
 		--build-arg SITE_NAME=${SITE_NAME} \
 		--build-arg SITE_HUMAN_NAME=${SITE_HUMAN_NAME} \
-		-f ./Dockerfile -t ${IMAGE_NAME}:${SOURCE_REF}&& \
+		-f ./Dockerfile -t ${IMAGE_NAME}:${SOURCE_REF}""" && \
+	docker build ./ \
+		--build-arg NOCACHE=${NOCACHE} \
+		--build-arg VERSION=${SOURCE_REF} \
+		--build-arg BUILD_TIME="${BUILD_TIME}" \
+		--build-arg SOURCE=${REPO_ORG}/${REPO_NAME} \
+		--build-arg SOURCE_DIR=${SOURCE_DIR} \
+		--build-arg SITE_NAME=${SITE_NAME} \
+		--build-arg SITE_HUMAN_NAME="${SITE_HUMAN_NAME}" \
+		-f ./Dockerfile -t ${IMAGE_NAME}:${SOURCE_REF} && \
 	rm -rf ./source
