@@ -11,9 +11,8 @@ python:
   - "3.6"
 script:
   - pip install pipenv
-  - pipenv install --dev
-  - pipenv install ./
+  - pipenv install --dev --skip-lock
+  - pipenv install ./ --skip-lock
   - pipenv run nose2 -s arxiv/marxdown --with-coverage
 after_success:
   - coveralls
-
