@@ -83,3 +83,28 @@ class TestServeSite(TestCase):
             response = client.get('/search?q=baz')
             self.assertEqual(response.status_code, status.HTTP_200_OK)
             self.assertIn(b'<a href="/baz">Baz Page</a>', response.data)
+
+    @mock.patch(f'{factory.__name__}.config', CONFIG)
+    def test_redirect(self):
+        """Test redirection based on frontmatter."""
+        app = factory.create_web_app()
+        client = app.test_client()
+
+        with app.app_context():
+            response = client.get('/baz/redirectme', follow_redirects=False)
+            self.assertEqual(response.status_code,
+                             status.HTTP_301_MOVED_PERMANENTLY)
+            self.assertEqual(response.headers['Location'],
+                             'http://localhost/foo')
+
+    @mock.patch(f'{factory.__name__}.config', CONFIG)
+    def test_deleted(self):
+        """Test redirection based on frontmatter."""
+        app = factory.create_web_app()
+        client = app.test_client()
+
+        with app.app_context():
+            response = client.get('/baz/deleted', follow_redirects=False)
+            self.assertEqual(response.status_code,
+                             status.HTTP_404_NOT_FOUND)
+            self.assertIn(b'Not here', response.data)

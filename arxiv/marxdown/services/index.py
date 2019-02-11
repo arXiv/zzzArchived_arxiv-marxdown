@@ -128,19 +128,6 @@ def get_by_path(path: str, get_parents: bool = True,
     )
 
 
-def get_static_file_by_path(path: str) -> str:
-    idx = _get_index(_get_static_index_path())
-    logger.debug('Searching with index %s', idx)
-    with idx.searcher() as searcher:
-        logger.debug('Searching for static file with path=%s', path)
-        result = searcher.document(path=path)
-    if result is None:
-        logger.debug('Result is None')
-        raise PageDoesNotExist('No such static file')
-    logger.debug('Found static file for path=%s', path)
-    return path
-
-
 def find(query: str, page_number: int = 1, limit: int = 20) -> SearchResults:
     """
     Perform a simple text search against the site index.

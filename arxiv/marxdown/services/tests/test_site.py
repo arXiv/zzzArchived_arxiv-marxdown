@@ -35,19 +35,19 @@ class TestSiteTree(TestCase):
                         '/foo': {
                             'title': 'Another foo page',
                             'path': '/foo',
-                            'modified': '2019-02-11T17:48:06+00:00',
+                            'modified': '2019-02-11T18:41:35+00:00',
                             'children': {}
                         },
                         '': {
                             'title': 'This is the index',
                             'path': '',
-                            'modified': '2019-02-11T17:48:06+00:00',
+                            'modified': '2019-02-11T18:41:34+00:00',
                             'children': {}
                         },
                         '/baz': {
                             'title': 'Baz Page',
                             'path': '/baz',
-                            'modified': '2019-02-11T17:48:06+00:00',
+                            'modified': '2019-02-11T18:41:35+00:00',
                             'children': {}
                         }
                     },

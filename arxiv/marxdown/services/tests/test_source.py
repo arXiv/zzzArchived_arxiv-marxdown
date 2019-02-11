@@ -19,6 +19,8 @@ class TestLoadSource(TestCase):
         ('index.md', '# This is the index\n\nHere is <a href="foo">link</a>.'),
         ('foo.md', '# Another foo page\n\nSee also <a href="baz">baz</a>.'),
         ('baz/index.md', '---\ntitle: Baz Page\n---\n# The baz index page'),
+        ('baz/redirectme.md', '---\nresponse:\n  status: 301\n  location: ../foo\n---'),
+        ('baz/deleted.md', '---\nresponse:\n  deleted: true\n---\nNot here'),
         ('notapage.txt', 'some non-markdown content here'),
         ('baz/foo.dat', 'some more non-markdown content here'),
         ('_hidden/baz.dat', 'this is not here'),
@@ -160,7 +162,7 @@ class TestLoadSource(TestCase):
         """Load all the pages."""
         self.mock_configure(mock_config)
         pages = [page for page in source.load_pages()]
-        self.assertEqual(len(pages), 3)
+        self.assertEqual(len(pages), 5)
         for page in pages:
             self.assertIsInstance(page, source.SourcePage)
 

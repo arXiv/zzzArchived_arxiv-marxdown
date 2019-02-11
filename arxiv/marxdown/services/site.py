@@ -92,6 +92,11 @@ def get_tree() -> SiteTree:
         return sorted(subpaths, key=len)
 
     for parent, pattern, metadata in walk():
+        if 'response' in metadata:
+            if metadata['response'].get('deleted'):
+                continue
+            elif int(metadata['response'].get('status', 200)) > 299:
+                continue
         subtree = tree[prefix]
         for subpath in _get_subpaths(parent):
             if subpath != subtree['path']:
