@@ -41,7 +41,8 @@
   {% for title, page_path, highlights in results.results %}
   <li class="li">
       <div class="title is-size-6" style="margin-bottom: 0em;">
-        <a href="{{ url_for(site_name + '.from_sitemap', page_path=page_path) }}">{{ title }}</a>
+        {% set path = page_path|pretty_path %}
+        <a href="{{ url_for(site_name + '.from_sitemap', page_path=path) }}">{{ title }}</a>
       </div>
       <div class="is-size-6">
         {{ highlights|safe }}

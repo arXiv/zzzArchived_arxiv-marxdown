@@ -2,6 +2,7 @@
 
 from unittest import TestCase, mock
 import os
+import shutil
 import tempfile
 from datetime import datetime
 from pytz import UTC
@@ -53,6 +54,11 @@ class TestLoadSource(TestCase):
         cls.repo.head.reference = cls.branch
         cls.version = '0.4.5'
         cls.latest_tag = cls.repo.create_tag(cls.version, message='message!')
+
+    @classmethod
+    def tearDownClass(cls):
+        """Clean up."""
+        shutil.rmtree(cls.repo_path)
 
     @classmethod
     def mock_configure(cls, mock_config):

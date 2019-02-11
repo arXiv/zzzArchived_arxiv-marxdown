@@ -9,7 +9,7 @@ import os
 import json
 from typing import List, Iterable
 from ..domain import IndexablePage, SearchResults, SearchResult
-from arxiv.base.globals import get_application_config
+from arxiv.base.globals import get_application_config as config
 
 from whoosh import fields, index
 from whoosh.qparser import QueryParser
@@ -186,15 +186,14 @@ def find(query: str, page_number: int = 1, limit: int = 20) -> SearchResults:
 
 def _get_index_path() -> str:
     """Get the index path from the current application."""
-    config = get_application_config()
-    return os.path.join(config['BUILD_PATH'], config.get('INDEX_NAME', 'idx'))
+    return os.path.join(config()['BUILD_PATH'],
+                        config().get('INDEX_NAME', 'idx'))
 
 
 def _get_static_index_path() -> str:
     """Get the index path from the current application."""
-    config = get_application_config()
-    _name = config.get('INDEX_NAME', 'idx')
-    return os.path.join(config['BUILD_PATH'], f'{_name}_static')
+    _name = config().get('INDEX_NAME', 'idx')
+    return os.path.join(config()['BUILD_PATH'], f'{_name}_static')
 
 
 def _get_index(index_path: str) -> index.Index:
