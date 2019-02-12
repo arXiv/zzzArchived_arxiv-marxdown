@@ -12,7 +12,8 @@ from . import serialize
 from . import load
 
 
-blueprint = Blueprint('sitemap', __name__, url_prefix='', template_folder='templates')
+blueprint = Blueprint('sitemap', __name__, url_prefix='',
+                      template_folder='templates')
 
 
 @blueprint.route('/sitemap_index.xml', methods=['GET'])

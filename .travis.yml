@@ -13,6 +13,6 @@ script:
   - pip install pipenv
   - pipenv install --dev --skip-lock
   - pipenv install ./ --skip-lock
-  - pipenv run nose2 -s arxiv/marxdown --with-coverage
+  - pipenv run pytest --cov=arxiv/marxdown --cov=arxiv/sitemap --cov-report=term-missing arxiv/sitemap arxiv/marxdown
 after_success:
   - coveralls
