@@ -28,19 +28,82 @@ cd ./docs-site
 pipenv install arxiv-marxdown
 ```
 
+Note that you will need to know the location of your virtual environment if you
+are deploying with ``mod_wsgi``. To get it, run:
+
+```bash
+pipenv --venv
+```
+
 3. Build the site. ``BUILD_PATH`` must be accessible by your web server.
 
 ```bash
 SITE_NAME=mysite SOURCE_PATH=/path/to/docs-site BUILD_PATH=/opt/mysite pipenv run python -m arxiv.marxdown.build
 ```
 
-4. Deploy static files.
+4. Deploy static files to S3. You need keys with write privileges to the S3
+   bucket.
 
 ```bash
 AWS_ACCESS_KEY_ID=[your access key] \
     AWS_SECRET_ACESS_KEY=[your secret key] \
+    AWS_REGION=[some region] \
     FLASKS3_ACTIVE=1 \
-    FLASKS3_BUCKET_NAME=some-bucket
+    FLASKS3_BUCKET_NAME=some-bucket \
+    SITE_NAME=mysite \
+    BUILD_PATH=/opt/mysite \
+    pipenv run python -m arxiv.marxdown.upload_static_assets
+
+```
+
+5. Configure the web server to run the marXdown app with your built site.
+
+If you are using ``mod_wsgi``, you will need to create a script called
+``wsgi.py`` that can be accessed by the server. This should load the marxdown
+app. For example:
+
+```python
+"""Web Server Gateway Interface entry-point."""
+
+import os
+from arxiv.marxdown.factory import create_web_app
+
+
+def application(environ, start_response):
+    """WSGI application factory."""
+    for key, value in environ.items():
+        os.environ[key] = str(value)
+    app = create_web_app()
+    return app(environ, start_response)
+
+```
+
+An Apache config might look like:
+
+```
+SetEnvIf Request_URI "^/mysite" BASE_SERVER=[ wherever.site.org ]
+SetEnvIf Request_URI "^/mysite" AWS_ACCESS_KEY_ID=[ your access key ]
+SetEnvIf Request_URI "^/mysite" AWS_SECRET_ACCESS_KEY=[ your secret key ]
+SetEnvIf Request_URI "^/mysite" AWS_REGION=[ your region ]
+SetEnvIf Request_URI "^/mysite" FLASKS3_ACTIVE=1
+SetEnvIf Request_URI "^/mysite" FLASKS3_BUCKET_NAME=[ your S3 bucket ]
+SetEnvIf Request_URI "^/mysite" SITE_NAME=mysite
+SetEnvIf Request_URI "^/mysite" SITE_HUMAN_NAME="My awesome site"
+SetEnvIf Request_URI "^/mysite" SITE_HUMAN_SHORT_NAME=Mine!
+SetEnvIf Request_URI "^/mysite" SOURCE_PATH=/path/to/docs-site
+SetEnvIf Request_URI "^/mysite" BUILD_PATH=/opt/mysite
+
+WSGIDaemonProcess mysite user=someuser group=somegroup threads=16 python-home=[ path to your venv ]  header-buffer-size=65536
+WSGIScriptAlias /mysite /opt/docs-site/wsgi.py/ process-group=mysite
+
+<Directory /opt/mysite>
+  WSGIProcessGroup mysite
+  WSGIApplicationGroup %{GLOBAL}
+  WSGIScriptReloading On
+
+  Order allow,deny
+  Allow from all
+</Directory>
 ```
 
 ## Site structure
