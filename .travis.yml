@@ -5,6 +5,7 @@ services:
 cache: pip
 env:
   MIN_PYLINT_SCORE: 8
+  BOTO_CONFIG: /dev/null 
 os:
   - linux
 python:

@@ -20,7 +20,6 @@ arxiv-auth = "==0.2.3"
 "flask-s3" = "*"
 mypy-extensions = "*"
 gitpython = "*"
-lxml = "*"
 py-gfm = "*"
 "e1839a8" = {path = "."}
 
