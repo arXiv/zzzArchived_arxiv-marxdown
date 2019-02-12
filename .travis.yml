@@ -5,7 +5,10 @@ services:
 cache: pip
 env:
   MIN_PYLINT_SCORE: 8
-  BOTO_CONFIG: /dev/null 
+  BOTO_CONFIG: /dev/null
+  AWS_ACCESS_KEY_ID: fookey
+  AWS_SECRET_ACCESS_KEY: bazsecret
+  AWS_REGION: us-east-1
 os:
   - linux
 python:

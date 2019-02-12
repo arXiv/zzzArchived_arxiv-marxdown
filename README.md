@@ -13,6 +13,36 @@ building and other goodies, this occurs in two steps:
 2. Serve: serve the site from the Jinja2 template fragments, rendering HTML on
    the fly.
 
+### Deployment overview
+
+1. Clone your site source wherever you're deploying it.
+
+```bash
+git clone git@github.com:arxiv/arxiv-docs ./docs-site
+```
+
+2. Install arXiv-marXdown.
+
+```bash
+cd ./docs-site
+pipenv install arxiv-marxdown
+```
+
+3. Build the site. ``BUILD_PATH`` must be accessible by your web server.
+
+```bash
+SITE_NAME=mysite SOURCE_PATH=/path/to/docs-site BUILD_PATH=/opt/mysite pipenv run python -m arxiv.marxdown.build
+```
+
+4. Deploy static files.
+
+```bash
+AWS_ACCESS_KEY_ID=[your access key] \
+    AWS_SECRET_ACESS_KEY=[your secret key] \
+    FLASKS3_ACTIVE=1 \
+    FLASKS3_BUCKET_NAME=some-bucket
+```
+
 ## Site structure
 
 Each site should be contained in a single directory. For example:
