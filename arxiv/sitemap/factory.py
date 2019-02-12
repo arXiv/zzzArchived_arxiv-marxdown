@@ -5,16 +5,14 @@ import logging
 from flask import Flask
 from flask_s3 import FlaskS3
 from arxiv.base import Base
-from . import routes
+from . import routes, config
 
 s3 = FlaskS3()
 
 
 def create_web_app() -> Flask:
     """Initialize an instance of the sitemap application."""
-    from . import config
-
-    app = Flask('sitemap')
+    app = Flask('arxiv.sitemap')
     app.config.from_object(config)
 
     Base(app)

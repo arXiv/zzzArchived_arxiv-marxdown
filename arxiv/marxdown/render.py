@@ -2,6 +2,8 @@
 
 from typing import Callable, Optional, Mapping, Union, Tuple, List
 import re
+import warnings
+from functools import wraps
 import xml.etree.ElementTree as ET
 from markdown import markdown, Markdown
 from markdown.extensions import Extension
@@ -38,13 +40,26 @@ def render(content: str, dereferencer: Optional[Callable] = None) -> str:
         Rendered HTML.
 
     """
-    extensions = ['tables', 'fenced_code', 'codehilite', 'toc', 'attr_list',
+    extensions = ['markdown.extensions.tables',
+                  'markdown.extensions.fenced_code',
+                  'markdown.extensions.codehilite',
+                  'markdown.extensions.toc',
+                  'markdown.extensions.attr_list',
                   PartialGithubFlavoredMarkdownExtension(),
-                  StyleClassExtension("table", ["table", "is-striped"])]
+                  StyleClassExtension(tag="table",
+                                      classes=["table", "is-striped"])]
     if dereferencer is not None:
-        extensions.append(ReferenceExtension('a', 'href', dereferencer))
-        extensions.append(ReferenceExtension('img', 'src', dereferencer))
-    return escape_braces(markdown(content, extensions=extensions))
+        extensions.append(ReferenceExtension(tag='a', attr='href',
+                                             dereferencer=dereferencer))
+        extensions.append(ReferenceExtension(tag='img', attr='src',
+                                             dereferencer=dereferencer))
+
+    # The GFM extension doesn't implement the changes related to positional
+    # arguments described in the Markdown v2.6 release notes.
+    # https://python-markdown.github.io/change_log/release-2.6/#positional-arguments-deprecated
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        return escape_braces(markdown(content, extensions=extensions))
 
 
 def escape_braces(content: str) -> str:
@@ -63,7 +78,7 @@ def escape_braces(content: str) -> str:
 class StyleClassProcessor(Treeprocessor):
     """Adds CSS classes to elements."""
 
-    def __init__(self, tag: str, classes: List[str]) -> None:
+    def __init__(self, tag: str = "html", classes: List[str] = []) -> None:
         """Set the target tag and classes to add."""
         self.tag = tag
         self.classes = classes
@@ -79,7 +94,7 @@ class StyleClassProcessor(Treeprocessor):
 class ReferenceProcessor(Treeprocessor):
     """Convert internal links to full paths."""
 
-    def __init__(self, tag: str, attr: str,
+    def __init__(self, tag: str = "a", attr: str = "href",
                  dereferencer: Optional[Callable] = None) -> None:
         """Set the link dereferencer for use during processing."""
         self.dereferencer = dereferencer
@@ -106,8 +121,8 @@ class ReferenceProcessor(Treeprocessor):
 class ReferenceExtension(Extension):
     """Adds :class:`.ReferenceProcessor` to the markdown processor."""
 
-    def __init__(self, tag: str, attr: str, dereferencer: Optional[Callable]) \
-            -> None:
+    def __init__(self, tag: str = "a", attr: str = "href",
+                 dereferencer: Optional[Callable] = None) -> None:
         """Set the link dereferencer for use during processing."""
         self.tag = tag
         self.attr = attr
@@ -115,21 +130,22 @@ class ReferenceExtension(Extension):
 
     def extendMarkdown(self, md: Markdown, md_globals: Mapping) -> None:
         """Add :class:`.ReferenceProcessor` to the markdown processor."""
-        inst = ReferenceProcessor(self.tag, self.attr, self.dereferencer)
+        inst = ReferenceProcessor(tag=self.tag, attr=self.attr,
+                                  dereferencer=self.dereferencer)
         md.treeprocessors[f'{self.tag}_{self.attr}_reference_processor'] = inst
 
 
 class StyleClassExtension(Extension):
     """Adds :class:`.ReferenceProcessor` to the markdown processor."""
 
-    def __init__(self, tag: str, classes: List[str]) -> None:
+    def __init__(self, tag: str = "a", classes: List[str] = []) -> None:
         """Set the link dereferencer for use during processing."""
         self.tag = tag
         self.classes = classes
 
     def extendMarkdown(self, md: Markdown, md_globals: Mapping) -> None:
         """Add :class:`.ReferenceProcessor` to the markdown processor."""
-        inst = StyleClassProcessor(self.tag, self.classes)
+        inst = StyleClassProcessor(tag=self.tag, classes=self.classes)
         md.treeprocessors[f'{self.tag}_style_class_processor'] = inst
 
 

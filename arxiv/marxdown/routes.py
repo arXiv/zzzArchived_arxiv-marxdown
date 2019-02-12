@@ -1,14 +1,13 @@
 """URL routes for the marXdown application."""
 
 from typing import Dict, Callable, Optional, Tuple
-from urllib.parse import urljoin, urlparse, parse_qs, urlencode, urlunparse
-from werkzeug.urls import Href, url_encode, url_parse, url_unparse, url_encode
+from werkzeug.urls import url_parse, url_unparse, url_encode
 
+from werkzeug.exceptions import NotFound
+import jinja2
 from flask_s3 import url_for as s3_url_for
 from flask import Blueprint, render_template_string, request, \
-    render_template, Response, current_app, url_for
-import jinja2
-from werkzeug.exceptions import NotFound
+    render_template, current_app, url_for
 
 from arxiv import status
 from . import render
@@ -121,7 +120,7 @@ def get_blueprint(site_path: str, with_search: bool = True) -> Blueprint:
     return blueprint
 
 
-docs = Blueprint('docs', __name__, url_prefix='/_docs',
+docs = Blueprint('docs', __name__, url_prefix='/_marxdown',
                  static_folder='static',
                  template_folder='templates',
                  static_url_path='static')

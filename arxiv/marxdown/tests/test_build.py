@@ -22,7 +22,8 @@ class TestBuild(TestCase):
         ('baz/index.md', '---\ntitle: Baz Page\n---\n# The baz index page'),
         ('notapage.txt', 'some non-markdown content here'),
         ('baz/foo.dat', 'some more non-markdown content here'),
-        ('baz/redirectme.md', '---\nresponse:\n  status: 301\n  location: ../foo\n---'),
+        ('baz/redirectme.md',
+         '---\nresponse:\n  status: 301\n  location: ../foo\n---'),
         ('baz/deleted.md', '---\nresponse:\n  deleted: true\n---\nNot here'),
         ('_hidden/baz.dat', 'this is not here'),
         ('_templates/sometemplate.html', '<html><body>what</body></html>'),
@@ -93,28 +94,37 @@ class TestBuild(TestCase):
         self.assertTrue(os.path.exists(data_path))
         self.assertTrue(os.path.exists(os.path.join(data_path, 'index.json')))
         self.assertTrue(os.path.exists(os.path.join(data_path, 'foo.json')))
-        self.assertTrue(os.path.exists(os.path.join(data_path, 'baz/index.json')))
-        self.assertTrue(os.path.exists(os.path.join(data_path, 'baz/redirectme.json')))
-        self.assertTrue(os.path.exists(os.path.join(data_path, 'baz/deleted.json')))
+        self.assertTrue(
+            os.path.exists(os.path.join(data_path, 'baz/index.json')))
+        self.assertTrue(
+            os.path.exists(os.path.join(data_path, 'baz/redirectme.json')))
+        self.assertTrue(
+            os.path.exists(os.path.join(data_path, 'baz/deleted.json')))
 
         # Template fragment is created for each page.
         pages_path = os.path.join(self.build_dir, 'pages')
         self.assertTrue(os.path.exists(pages_path))
         self.assertTrue(os.path.exists(os.path.join(pages_path, 'index.j2')))
         self.assertTrue(os.path.exists(os.path.join(pages_path, 'foo.j2')))
-        self.assertTrue(os.path.exists(os.path.join(pages_path, 'baz/index.j2')))
-        self.assertTrue(os.path.exists(os.path.join(pages_path, 'baz/redirectme.j2')))
-        self.assertTrue(os.path.exists(os.path.join(pages_path, 'baz/deleted.j2')))
+        self.assertTrue(
+            os.path.exists(os.path.join(pages_path, 'baz/index.j2')))
+        self.assertTrue(
+            os.path.exists(os.path.join(pages_path, 'baz/redirectme.j2')))
+        self.assertTrue(
+            os.path.exists(os.path.join(pages_path, 'baz/deleted.j2')))
 
         # Templates are copied in.
         templates_path = os.path.join(self.build_dir, 'templates')
         self.assertTrue(os.path.exists(templates_path))
-        self.assertTrue(os.path.exists(os.path.join(templates_path, 'sometemplate.html')))
+        self.assertTrue(
+            os.path.exists(os.path.join(templates_path, 'sometemplate.html')))
 
         # Static files are copied in.
         static_path = os.path.join(self.build_dir, 'static', self.site_dir)
         self.assertTrue(os.path.exists(static_path))
-        self.assertTrue(os.path.exists(os.path.join(static_path, 'notapage.txt')))
-        self.assertTrue(os.path.exists(os.path.join(static_path, 'baz/foo.dat')))
+        self.assertTrue(
+            os.path.exists(os.path.join(static_path, 'notapage.txt')))
+        self.assertTrue(
+            os.path.exists(os.path.join(static_path, 'baz/foo.dat')))
 
         self.assertTrue(os.path.exists(index_path))

@@ -1,12 +1,12 @@
 """Application factory for static site."""
 
 import logging
-
+from typing import Optional
 from datetime import datetime
 import dateutil.parser
 from pytz import timezone
 
-from flask import Flask
+from flask import Flask, Config
 from flask_s3 import FlaskS3
 from arxiv.base import Base
 from . import routes, config
@@ -36,10 +36,19 @@ def pretty_path(path: str) -> str:
     return path
 
 
-def create_web_app() -> Flask:
+def create_web_app(build_path: Optional[str] = None,
+                   with_search: Optional[bool] = None,
+                   extra_config: Optional[dict] = None) -> Flask:
     """Initialize an instance of the static pages application."""
-    app = Flask(config.SITE_NAME)
+    app = Flask('arxiv.marxdown')
     app.config.from_object(config)
+    if build_path is None:
+        build_path = app.config.get('BUILD_PATH', "./")
+    if with_search is None:
+        with_search = app.config.get('SITE_SEARCH_ENABLED', True)
+
+    if extra_config is not None:
+        app.config.update(extra_config)
 
     Base(app)
 
@@ -50,8 +59,8 @@ def create_web_app() -> Flask:
         # to content pages.
         app.register_blueprint(
             routes.get_blueprint(
-                app.config.get('BUILD_PATH', "./"),
-                with_search=app.config.get('SITE_SEARCH_ENABLED', True)
+                build_path,
+                with_search=with_search
             )
         )
     app.jinja_env.filters['format_datetime'] = format_datetime

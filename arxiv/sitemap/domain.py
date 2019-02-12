@@ -17,5 +17,5 @@ URLSet = Dict[str, URL]
 """
 The sitemap as a whole.
 
-This is a nested dict struct; see :const:`.URL`\.
+This is a nested dict struct; see :const:`.URL`.
 """

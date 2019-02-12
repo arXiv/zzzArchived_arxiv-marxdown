@@ -78,20 +78,28 @@ from mypy_extensions import TypedDict
 from flask import Flask
 
 from arxiv.base.globals import get_application_config
+from arxiv.base import logging
 from arxiv.util.serialize import ISO8601JSONEncoder
 
-from marxdown.factory import create_web_app
-from marxdown.services import site
-from marxdown import build
-from marxdown.domain import SiteTree, SiteTreePart
+from arxiv.marxdown.factory import create_web_app
+from arxiv.marxdown.services import site
+from arxiv.marxdown import build
+from arxiv.marxdown.domain import SiteTree, SiteTreePart
 
 import click
+
+logger = logging.getLogger(__name__)
 
 
 @click.command()
 @click.option('--spec-file', '-s', help="Path to the site spec file (json).")
 @click.option('--out-file', '-o', help="Path to the write the sitemap (json)")
 def create_site_map(spec_file: str, out_file: str) -> None:
+    """Create a site map from a site spec (JSON)."""
+    do_create_site_map(spec_file, out_file)
+
+
+def do_create_site_map(spec_file: str, out_file: str) -> None:
     """Create a site map from a site spec (JSON)."""
     with open(spec_file) as f:
         specs = json.load(f)
@@ -108,8 +116,7 @@ def create_site_map(spec_file: str, out_file: str) -> None:
         repo_path = _retrieve_repository(working_path, spec)
 
         # Build the site.
-        app = create_web_app()
-        _configure_site(app, repo_path, spec)
+        app = create_web_app(extra_config=_get_site_config(repo_path, spec))
         with app.app_context():
             build.build_site(False)
             subtree = site.get_tree()
@@ -183,19 +190,21 @@ def _retrieve_repository(working_path: str, spec: SiteSpec):
     return repo_path
 
 
-def _configure_site(app: Flask, repo_path: str, spec: SiteSpec) -> None:
+def _get_site_config(repo_path: str, spec: SiteSpec) -> dict:
     """Configure marXdown from the site spec."""
     source_path = os.path.join(repo_path, spec['source_dir'])
-    if not os.path.exists(source_path):
-        raise RuntimeError(f'{spec["name"]}: {spec["source_dir"]} does not'
-                           f' exist in {spec["repo"]}')
+    # if not os.path.exists(source_path):
+    #     raise RuntimeError(f'{spec["name"]}: {spec["source_dir"]} does not'
+    #                        f' exist in {spec["repo"]}')
     build_path = tempfile.mkdtemp()
-
-    app.config['SITE_NAME'] = spec['name']
-    app.config['SITE_URL_PREFIX'] = spec['url_prefix']
-    app.config['SOURCE_PATH'] = source_path
-    app.config['SITE_HUMAN_NAME'] = spec['human_name']
-    app.config['BUILD_PATH'] = build_path
+    logger.debug('configure site with build path %s', build_path)
+    config = {}
+    config['SITE_NAME'] = spec['name']
+    config['SITE_URL_PREFIX'] = spec['url_prefix']
+    config['SOURCE_PATH'] = source_path
+    config['SITE_HUMAN_NAME'] = spec['human_name']
+    config['BUILD_PATH'] = build_path
+    return config
 
 
 def _paths_to_urls(server: str, tree_part: SiteTreePart) -> SiteTreePart:

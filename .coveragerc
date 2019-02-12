@@ -5,4 +5,5 @@ omit =
     */test*
     */app.py
     */wsgi.py
+    */config.py
     setup.py

@@ -7,8 +7,10 @@ import json
 
 from arxiv.base.globals import get_application_config as config
 from arxiv.util.serialize import ISO8601JSONEncoder
-
+from arxiv.base import logging
 from ..domain import Page, SiteTree
+
+logger = logging.getLogger(__name__)
 
 
 class PageNotFound(Exception):
@@ -129,11 +131,10 @@ def get_tree() -> SiteTree:
 
 def get_static_path() -> str:
     """Get the absolute path for the site static directory."""
-    return os.path.abspath(os.path.join(
-        config().get('BUILD_PATH', './'),
-        'static',
-        get_site_name()
-    ))
+    build_path = config().get('BUILD_PATH', './')
+    logger.debug('get static path with build path %s, site name %s',
+                 build_path, get_site_name())
+    return os.path.abspath(os.path.join(build_path, 'static', get_site_name()))
 
 
 def get_site_name() -> str:

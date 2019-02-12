@@ -21,6 +21,7 @@ See `https://www.sitemaps.org/protocol.html`_. For details.
 
 from typing import Iterable
 # from lxml import etree    # Issues with lxml version in mod_wsgi. :-(
+import io
 from xml.etree import ElementTree as etree
 
 from .domain import URLSet, URL
@@ -33,7 +34,12 @@ def sitemap_xml(urlset: URLSet) -> str:
     root = etree.Element("urlset", xmlns=SITEMAPS_NAMESPACE)
     for url in iter_urls(urlset):
         root.append(url_xml(url))
-    return etree.tostring(root, encoding="UTF-8")
+    buffer = io.BytesIO()
+    tree = etree.ElementTree(root)
+    tree.write(buffer, encoding="UTF-8", xml_declaration=True)
+    buffer.seek(0)
+    return buffer.read()
+    # return root.read()
     # If we ever get to use lxml....
     # xml_declaration=True
     # pretty_print=True
@@ -49,7 +55,7 @@ def iter_urls(urlset: URLSet) -> Iterable[URL]:
 
 def lastmod(url: URL) -> etree.Element:
     """
-    The date of last modification of the file.
+    Date of last modification of the file.
 
     This date should be in W3C Datetime format. This format allows you to omit
     the time portion, if desired, and use YYYY-MM-DD.
