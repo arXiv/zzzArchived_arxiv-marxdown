@@ -13,7 +13,7 @@ building and other goodies, this occurs in two steps:
 2. Serve: serve the site from the Jinja2 template fragments, rendering HTML on
    the fly.
 
-### Deployment overview
+### Deployment
 
 1. Clone your site source wherever you're deploying it.
 
