@@ -1,0 +1,3 @@
+recursive-include arxiv/marxdown/static/ *
+recursive-include arxiv/marxdown/templates *
+recursive-include arxiv/sitemap/templates *

@@ -25,5 +25,6 @@ setup(
         'gitpython==2.1.11',
         'py-gfm==0.1.4',
         'pyyaml==4.2b4'
-    ]
+    ],
+    include_package_data=True
 )
