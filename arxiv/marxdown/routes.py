@@ -7,16 +7,28 @@ from werkzeug.exceptions import NotFound
 import jinja2
 from flask_s3 import url_for as s3_url_for
 from flask import Blueprint, render_template_string, request, \
-    render_template, current_app, url_for
+    render_template, current_app, url_for, redirect, Response
 
 from arxiv import status
 from . import render
 from .services import site, index
 
-Response = Tuple[str, int, dict]
+ResponseTuple = Tuple[str, int, dict]
 
 
-def from_sitemap(page_path: str = '') -> Response:
+def redirect_html(page_path: str = '') -> Response:
+    """Redirect .htm and .html to their bare equivalents."""
+    try:
+        page = site.load_page(page_path)
+    except site.PageNotFound:
+        raise NotFound('No such page')
+    site_name = site.get_site_name()
+    target = url_for(f'{site_name}.from_sitemap', page_path=page_path)
+    response: Response = redirect(target, status.HTTP_302_FOUND)
+    return response
+
+
+def from_sitemap(page_path: str = '') -> ResponseTuple:
     """Handle a request for ``page_path``."""
     try:
         page = site.load_page(page_path)
@@ -68,7 +80,7 @@ def from_sitemap(page_path: str = '') -> Response:
     return content, code, headers
 
 
-def search() -> Response:
+def search() -> ResponseTuple:
     """Handle a search request."""
     q = request.args.get('q')
     limit = min(int(request.args.get('l', 20)), 50)
@@ -107,9 +119,9 @@ def get_blueprint(site_path: str, with_search: bool = True) -> Blueprint:
                           template_folder=site.get_templates_path(),
                           static_url_path=f'{site.get_site_name()}_static')
     blueprint.route('/')(from_sitemap)
-    blueprint.route('/<path:page_path>.html', endpoint="html")(from_sitemap)
-    blueprint.route('/<path:page_path>.htm', endpoint="htm")(from_sitemap)
     blueprint.route('/<path:page_path>')(from_sitemap)
+    blueprint.route('/<path:page_path>.html', endpoint="html")(redirect_html)
+    blueprint.route('/<path:page_path>.htm', endpoint="htm")(redirect_html)
     if with_search:
         blueprint.route('/search', methods=['GET'])(search)
     blueprint.context_processor(url_for_page_builder)
