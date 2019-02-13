@@ -1,0 +1,69 @@
+{%- extends "base/base.html" %}
+
+{% block addl_head %}
+  <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/docs.css')}}" />
+  <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/codehilite.css')}}" />
+  <script type="text/javascript" src="https://arxiv-org.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-2rg805/b/26/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=7a070c4b"></script>
+
+  <script type="text/javascript">
+  window.ATL_JQ_PAGE_PROPS =  {
+    "triggerFunction": function(showCollectorDialog) {
+      //Requires that jQuery is available!
+      $("#feedback-button").click(function(e) {
+        e.preventDefault();
+        showCollectorDialog();
+      });
+    },
+    fieldValues: {
+      "components": ["{{ config.JIRA_COMPONENT }}"],
+      "versions": ["{{ config.JIRA_VERSION }}"],
+      "customfield_11401": window.location.href
+    }
+  };
+  </script>
+
+{% endblock addl_head %}
+
+
+{% block content %}
+
+{% block search_bar %}
+  {% if config.SITE_SEARCH_ENABLED %}
+  <form action="{{ url_for(site_name + '.search')}}" method="GET" class="form">
+    <div class="field has-addons" style="justify-content: flex-end;">
+      <div class="control" style="z-index: 1000">
+        <label for="q" class="is-sr-only">Search {{ site_human_name }}</label>
+        <input
+          class="input is-small"
+          type="text"
+          name="q"
+          placeholder="Search {{ site_human_name }}"
+          {% if q %}value="{{ q }}"{% endif %}
+        />
+      </div>
+      <button class="button is-link is-small">Search</button>
+    </div>
+  </form>
+  {% endif %}
+{% endblock %}
+
+<div {% if config.SITE_SEARCH_ENABLED %}class="search-shift-up"{% endif %}>
+  {% block breadcrumbs %}
+  {% endblock breadcrumbs %}
+</div>
+<div {% if config.SITE_SEARCH_ENABLED %}class="search-shift-up"{% endif %}>
+  {% block page_content %}
+    {% block markdown_content %}
+    {% endblock %}
+  {% endblock page_content %}
+</div>
+
+<aside class="has-text-centered" style="padding-top: 3rem;">
+  {% if modified %}
+  <p class="is-size-7">"{{ title }}" revision <a href="{{ version_url }}">{{ version }}</a>. Last modified {% if source_url %}<a href="{{ source_url }}">{% endif %}{{ modified|simepledate }}{% if source_url %}</a>{% endif %}.</p> <button class="button is-small" id="feedback-button">Feedback?</button>
+  {% else %}
+  <button class="button is-small" id="feedback-button">Feedback?</button>
+  {% endif %}
+</aside>
+
+{% endblock content %}

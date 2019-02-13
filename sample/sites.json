@@ -1,0 +1,49 @@
+{
+  "sites": [
+    {
+      "name": "help",
+      "repo": "git@github.com:arXiv/arxiv-docs.git",
+      "source_dir": "help",
+      "source_ref": "develop",
+      "human_name": "arXiv Help",
+      "url_prefix": "/ng/help",
+      "server": "https://beta.arxiv.org"
+    },
+    {
+      "name": "corr",
+      "repo": "git@github.com:arXiv/arxiv-docs.git",
+      "source_dir": "corr",
+      "source_ref": "develop",
+      "human_name": "Computing Research Repository (CoRR)",
+      "url_prefix": "/ng/corr",
+      "server": "https://beta.arxiv.org"
+    },
+    {
+      "name": "new",
+      "repo": "git@github.com:arXiv/arxiv-docs.git",
+      "source_dir": "new",
+      "source_ref": "develop",
+      "human_name": "What's been New on the arXiv.org e-print archives",
+      "url_prefix": "/ng/new",
+      "server": "https://beta.arxiv.org"
+    },
+    {
+      "name": "about",
+      "repo": "git@github.com:arXiv/arxiv-docs.git",
+      "source_dir": "about",
+      "source_ref": "develop",
+      "human_name": "About arXiv",
+      "url_prefix": "/ng/about",
+      "server": "https://beta.arxiv.org"
+    },
+    {
+      "name": "labs",
+      "repo": "git@github.com:arXiv/arxiv-docs.git",
+      "source_dir": "labs",
+      "source_ref": "develop",
+      "human_name": "arXiv Labs",
+      "url_prefix": "",
+      "server": "https://labs.arxiv.org"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+.match {
+  color: #287916 !important;
+  background-color: #EEFFE8 !important;
+  font-weight: bold;
+}
+
+/* adjusts content to vertically align with interior search bar */
+@media screen and (min-width: 769px) {
+  .search-shift-up {
+      position: relative;
+      top: -1.75rem;
+    }
+  .breadcrumb ul {
+    margin-top: 0;
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb ul {
+  margin-left: 0;
+}

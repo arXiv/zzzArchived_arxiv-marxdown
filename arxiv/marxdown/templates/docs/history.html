@@ -1,0 +1,5 @@
+{% macro render_history(history) %}
+{% for github_url, created, message in history %}
+  <li><a href="{{ github_url }}" rel="external">{{ created|simepledate  }} - {{ message.capitalize() }}</a></li>
+{% endfor %}
+{% endmacro %}
