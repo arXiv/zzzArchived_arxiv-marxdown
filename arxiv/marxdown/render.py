@@ -151,8 +151,13 @@ class StyleClassExtension(Extension):
 
 def get_linker(page: SourcePage, site_name: str) -> Callable:
     def linker(href: str) -> Tuple[str, str, str, Optional[str]]:
-        if not href or '://' in href or href.startswith('/') \
-                or href.startswith('#'):
+        # We don't want to mess with things that are clearly not ours to
+        # fiddle with.
+        if not href \
+                or '://' in href \
+                or href.startswith('/') \
+                or href.startswith('#') \
+                or href.startswith('mailto:'):
             return href, None, None, None
         anchor = None
         if '#' in href:

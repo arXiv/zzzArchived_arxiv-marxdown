@@ -3,6 +3,16 @@ import re
 from .. import render
 
 
+class TestMailToLinks(TestCase):
+    """Link processing should not break ``mailto:`` links."""
+
+    def test_mailto_is_untouched(self):
+        """If a link starts with ``mailto:``, it shouldn't be fiddled with."""
+        raw = """click [here](mailto:help@arxiv.org)."""
+        expected = """<p>click <a href="mailto:help@arxiv.org">here</a>.</p>"""
+        self.assertEqual(render.render(raw), expected)
+
+
 class TestEscapeBrackets(TestCase):
     """Braces are common in TeX; we should not confuse them with Jinja."""
 
