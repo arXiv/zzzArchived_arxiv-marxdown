@@ -108,6 +108,7 @@ def get_blueprint(site_path: str, with_search: bool = True) -> Blueprint:
                           static_url_path=f'{site.get_site_name()}_static')
     blueprint.route('/')(from_sitemap)
     blueprint.route('/<path:page_path>.html', endpoint="html")(from_sitemap)
+    blueprint.route('/<path:page_path>.htm', endpoint="htm")(from_sitemap)
     blueprint.route('/<path:page_path>')(from_sitemap)
     if with_search:
         blueprint.route('/search', methods=['GET'])(search)
