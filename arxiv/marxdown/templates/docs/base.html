@@ -3,7 +3,7 @@
 {% block addl_head %}
   <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/docs.css')}}" />
   <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/codehilite.css')}}" />
-  <script type="text/javascript" src="https://arxiv-org.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-2rg805/b/26/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=7a070c4b"></script>
+  <script type="text/javascript" src="{{ config.JIRA_COLLECTOR_URL }}"></script>
 
   <script type="text/javascript">
   window.ATL_JQ_PAGE_PROPS =  {
@@ -15,7 +15,7 @@
       });
     },
     fieldValues: {
-      "components": ["{{ config.JIRA_COMPONENT }}"],
+      {% if config.JIRA_COMPONENT %}"components": ["{{ config.JIRA_COMPONENT }}"],{% endif %}
       "versions": ["{{ config.JIRA_VERSION }}"],
       "customfield_11401": window.location.href
     }

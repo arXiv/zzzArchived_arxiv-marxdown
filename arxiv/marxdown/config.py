@@ -33,7 +33,7 @@ Flask-S3 plugin settings.
 See `<https://flask-s3.readthedocs.io/en/latest/>`_.
 """
 FLASKS3_BUCKET_NAME = os.environ.get('FLASKS3_BUCKET_NAME', 'some_bucket')
-# FLASKS3_CDN_DOMAIN = os.environ.get('FLASKS3_CDN_DOMAIN', 'static.arxiv.org')
+FLASKS3_CDN_DOMAIN = os.environ.get('FLASKS3_CDN_DOMAIN', 'static.arxiv.org')
 FLASKS3_USE_HTTPS = os.environ.get('FLASKS3_USE_HTTPS', 1)
 FLASKS3_FORCE_MIMETYPE = os.environ.get('FLASKS3_FORCE_MIMETYPE', 1)
 FLASKS3_ACTIVE = bool(int(os.environ.get('FLASKS3_ACTIVE', 0)))
@@ -53,7 +53,11 @@ SITE_SEARCH_ENABLED = bool(int(os.environ.get('SITE_SEARCH_ENABLED', 1)))
 APP_VERSION = "0.1"
 
 
-JIRA_VERSION = "14201"      # v0.1
-JIRA_COMPONENT = "16038"    # Static
+JIRA_VERSION = os.environ.get("JIRA_VERSION", "14219")      # docs-0.2
+JIRA_COMPONENT = os.environ.get("JIRA_COMPONENT", "12154")    # Help pages
+JIRA_COLLECTOR_URL = os.environ.get(
+    "JIRA_COLLECTOR_URL",
+    "https://arxiv-org.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-2rfjj7/b/29/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=9f4c36dd"
+)
 RELEASE_NOTES_URL = "https://"
-RELEASE_NOTES_TEXT = "v0.1 released 2019-02-11"
+RELEASE_NOTES_TEXT = "v0.2 released 2019-02-11"
