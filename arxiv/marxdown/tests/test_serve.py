@@ -8,7 +8,7 @@ from datetime import datetime
 from pytz import UTC
 import time
 import git
-
+import copy
 from arxiv import status
 from .. import factory
 
@@ -16,6 +16,7 @@ BUILD_DIR = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'data')
 S3_BUCKET = 'test-bucket'
 SITE_NAME = 'test'
 VERSION = '0.4.2'
+CDN = 'foo.static.com'
 
 CONFIG = mock.MagicMock(**{
     'BUILD_PATH': BUILD_DIR,
@@ -26,6 +27,9 @@ CONFIG = mock.MagicMock(**{
     'FLASKS3_BUCKET_NAME': S3_BUCKET,
     'APP_VERSION': VERSION
 })
+
+CONFIG_WITH_CDN = copy.copy(CONFIG)
+CONFIG_WITH_CDN.FLASKS3_CDN_DOMAIN = CDN
 
 
 class TestServeSite(TestCase):
@@ -215,7 +219,24 @@ class TestServeSite(TestCase):
 
         with app.app_context():
             response = client.get('/notapage.txt', follow_redirects=False)
-            u = "https://%s.s3.amazonaws.com/static/arxiv.marxdown/%s/%s/%s" \
-                % (S3_BUCKET, VERSION, SITE_NAME, "notapage.txt")
             self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-            self.assertEqual(response.headers['Location'], u)
+            self.assertEqual(
+                response.headers['Location'],
+                "https://%s.s3.amazonaws.com/static/arxiv.marxdown/%s/%s/%s"
+                % (S3_BUCKET, VERSION, SITE_NAME, "notapage.txt")
+            )
+
+    @mock.patch(f'{factory.__name__}.config', CONFIG_WITH_CDN)
+    def test_serve_cdn_static(self):
+        """Requests for static URLs should be redirected."""
+        app = factory.create_web_app()
+        client = app.test_client()
+
+        with app.app_context():
+            response = client.get('/notapage.txt', follow_redirects=False)
+            self.assertEqual(response.status_code, status.HTTP_302_FOUND)
+            self.assertEqual(
+                response.headers['Location'],
+                "https://%s/static/arxiv.marxdown/%s/%s/%s"
+                % (CDN, VERSION, SITE_NAME, "notapage.txt")
+            )
