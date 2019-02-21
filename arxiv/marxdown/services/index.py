@@ -128,6 +128,16 @@ def get_by_path(path: str, get_parents: bool = True,
     )
 
 
+def static_exists(path: str) -> bool:
+    """Determine whether a ``path`` refers to a real static asset."""
+    logger.debug('Is %s a static file?', path)
+    idx = _get_index(_get_static_index_path())
+    with idx.searcher() as searcher:
+        logger.debug('Searching with path=%s', path)
+        result = searcher.document(path=path)
+    return result is not None
+
+
 def find(query: str, page_number: int = 1, limit: int = 20) -> SearchResults:
     """
     Perform a simple text search against the site index.
