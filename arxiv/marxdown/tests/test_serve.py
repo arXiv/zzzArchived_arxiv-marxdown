@@ -13,14 +13,18 @@ from arxiv import status
 from .. import factory
 
 BUILD_DIR = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'data')
+S3_BUCKET = 'test-bucket'
+SITE_NAME = 'test'
+VERSION = '0.4.2'
 
 CONFIG = mock.MagicMock(**{
     'BUILD_PATH': BUILD_DIR,
-    'SITE_NAME': 'test',
+    'SITE_NAME': SITE_NAME,
     'SITE_HUMAN_NAME': 'The test site of testiness',
     'SITE_HUMAN_SHORT_NAME': 'Test site',
     'SITE_SEARCH_ENABLED': 1,
-    'FLASKS3_BUCKET_NAME': 'test-bucket'
+    'FLASKS3_BUCKET_NAME': S3_BUCKET,
+    'APP_VERSION': VERSION
 })
 
 
@@ -202,3 +206,16 @@ class TestServeSite(TestCase):
                              status.HTTP_302_FOUND)
             self.assertEqual(response.headers['Location'],
                              'http://localhost/baz/redirectme')
+
+    @mock.patch(f'{factory.__name__}.config', CONFIG)
+    def test_serve_static(self):
+        """Requests for static URLs should be redirected."""
+        app = factory.create_web_app()
+        client = app.test_client()
+
+        with app.app_context():
+            response = client.get('/notapage.txt', follow_redirects=False)
+            u = "https://%s.s3.amazonaws.com/static/arxiv.marxdown/%s/%s/%s" \
+                % (S3_BUCKET, VERSION, SITE_NAME, "notapage.txt")
+            self.assertEqual(response.status_code, status.HTTP_302_FOUND)
+            self.assertEqual(response.headers['Location'], u)

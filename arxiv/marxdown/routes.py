@@ -10,8 +10,12 @@ from flask import Blueprint, render_template_string, request, \
     render_template, current_app, url_for, redirect, Response
 
 from arxiv import status
+from arxiv.base import logging
 from . import render
 from .services import site, index
+
+
+logger = logging.getLogger(__name__)
 
 ResponseTuple = Tuple[str, int, dict]
 
@@ -30,17 +34,25 @@ def redirect_html(page_path: str = '') -> Response:
 
 def from_sitemap(page_path: str = '') -> ResponseTuple:
     """Handle a request for ``page_path``."""
-    try:
-        page = site.load_page(page_path)
-    except site.PageNotFound:
-        raise NotFound('No such page')
-
     # If static files are up in S3, we want to generate static URLs for S3
     # rather than local ones.
     if current_app.config['FLASKS3_ACTIVE']:
+        logger.debug('use S3 for static files')
         this_url_for = s3_url_for
     else:
         this_url_for = url_for
+
+    try:
+        page = site.load_page(page_path)
+    except site.PageNotFound:
+        # This may be a request for a static URL, e.g. if there exists a
+        # direct link from another site.
+        if index.static_exists(page_path):
+            static_url = this_url_for(f'{site.get_site_name()}.static',
+                                      filename=page_path)
+            logger.debug('Redirect to %s', static_url)
+            return redirect(static_url, code=status.HTTP_302_FOUND)
+        raise NotFound('No such page')
 
     # Support for response parameters in page frontmatter. This is to support
     # stubs for deleted/moved pages (ARXIVNG-1545).
