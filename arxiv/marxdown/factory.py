@@ -52,9 +52,10 @@ def create_web_app(build_path: Optional[str] = None,
 
     Base(app)
 
-    app.register_blueprint(routes.docs)     # Provides base templates.
-
     with app.app_context():     # Need the app context for the config to stick.
+        # Provides base templates.
+        app.register_blueprint(routes.get_docs_blueprint(app))
+
         # We build the blueprint on the fly, so that we get dynamic routing
         # to content pages.
         app.register_blueprint(
@@ -63,6 +64,7 @@ def create_web_app(build_path: Optional[str] = None,
                 with_search=with_search
             )
         )
+
     app.jinja_env.filters['format_datetime'] = format_datetime
     app.jinja_env.filters['simepledate'] = simepledate
     app.jinja_env.filters['pretty_path'] = pretty_path
