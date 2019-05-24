@@ -6,11 +6,11 @@ name = "pypi"
 [packages]
 flask = "*"
 markdown = "*"
-pyyaml = "==4.2b4"
+pyyaml = ">=4.2b4"
 whoosh = "*"
 bleach = "*"
 uwsgi = "*"
-arxiv-base = "==0.14.3"
+arxiv-base = "==0.15.8rc4"
 python-frontmatter = "*"
 python-slugify = "*"
 Pygments = "*"
@@ -21,12 +21,13 @@ arxiv-auth = "==0.2.3"
 mypy-extensions = "*"
 gitpython = "*"
 py-gfm = "*"
-"e1839a8" = {path = "."}
+urllib3 = ">=1.24.2"    # CVE-2019-11324
+Jinja2 = ">=2.10.1"     # CVE-2019-10906
+e1839a8 = {path = "."}
 
 [dev-packages]
 "nose2" = "==0.8.0"
-"typed-ast" = "==1.1.0"
-mypy = "==0.650"
+mypy = "==0.701"
 pylint = "==2.2.2"
 pydocstyle = "==3.0.0"
 moto = "*"
