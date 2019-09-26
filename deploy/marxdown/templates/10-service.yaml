@@ -6,7 +6,7 @@ metadata:
   labels:
     app: "{{ default "marxdown" .Values.deploymentName }}"
     subsystem: "{{ .Values.subsystem }}"
-    container: "{{ .Values.siteName }}"
+    container: "{{ .Values.deploymentName }}"
     service-group: ui
     log-style: uwsgi
     env: "{{ .Values.namespace }}"

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: "{{ default "marxdown" .Values.deploymentName }}"
     subsystem: "{{ .Values.subsystem }}"
-    container: "{{ .Values.siteName }}"
+    container: "{{ .Values.deploymentName }}"
     service-group: ui
     log-style: uwsgi
     env: "{{ .Values.namespace }}"
@@ -17,13 +17,13 @@ spec:
       labels:
         app: "{{ default "marxdown" .Values.deploymentName }}"
         subsystem: "{{ .Values.subsystem }}"
-        container: "{{ .Values.siteName }}"
+        container: "{{ .Values.deploymentName }}"
         service-group: ui
         log-style: uwsgi
     spec:
       terminationGracePeriodSeconds: 60
       containers:
-      - name: marxdown-{{ .Values.siteName }}
+      - name: {{ .Values.deploymentName }}
         image: {{ .Values.imageName }}:{{ .Values.imageTag }}
         imagePullPolicy: Always
         env:
@@ -31,12 +31,16 @@ spec:
           value: "{{ default "/" .Values.sub_path }}"
         - name: SITE_SEARCH_ENABLED
           value: "{{ default "1" .Values.siteSearchEnabled }}"
+        {{- range $key, $val := .Values.env }}
+        - name: {{ $key }}
+          value: {{ $val | quote }}
+        {{- end }}
         ports:
         - containerPort: 8000
         resources:
           limits:
-            cpu: 250m
-            memory: 256Mi
+            cpu: "{{ default "250m" .Values.resources.cpu.max }}"
+            memory: "{{ default "256Mi" .Values.resources.memory.max }}"
           requests:
-            cpu: 50m
-            memory: 128Mi
+            cpu: "{{ default "50m" .Values.resources.cpu.min }}"
+            memory: "{{ default "128Mi" .Values.resources.memory.min }}"

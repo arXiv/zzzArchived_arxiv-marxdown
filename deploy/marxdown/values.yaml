@@ -5,7 +5,6 @@ host: changeme
 serviceName: changeme
 deploymentName: changeme
 ingressName: changeme
-siteName: changeme
 siteSearchEnabled: "1"
 sub_path: "/"
 subsystem: infrastructure
@@ -16,3 +15,13 @@ tls:
 # correct ingress rules are defined.
 ingressPaths:
 - "/"
+
+resources:
+  memory:
+    max: 256Mi
+    min: 128Mi
+  cpu:
+    max: 250m
+    min: 50m
+
+env: {}
