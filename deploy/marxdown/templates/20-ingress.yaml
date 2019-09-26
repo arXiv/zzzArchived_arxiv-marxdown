@@ -1,0 +1,32 @@
+# This gives us a reference to the global scope in case we need it while
+# working in a narrower scope.
+{{- $root := . -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ default "marxdown-ingress" .Values.ingressName }}"
+  namespace: "{{ .Values.namespace }}"
+  labels:
+    app: "{{ default "marxdown" .Values.deploymentName }}"
+    subsystem: "{{ .Values.subsystem }}"
+    container: "{{ .Values.siteName }}"
+    service-group: ui
+    log-style: uwsgi
+    env: "{{ .Values.namespace }}"
+  annotations:
+    ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Request-Id: $req_id";
+    # ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - secretName: "{{ .Values.tls.secret }}"
+  rules:
+  - host: "{{ .Values.host }}"
+    http:
+      paths:
+      {{- range .Values.ingressPaths }}
+      - path: "{{ . }}"
+        backend:
+          serviceName: "{{ default "marxdown" $root.serviceName }}"
+          servicePort: 80
+      {{- end }}

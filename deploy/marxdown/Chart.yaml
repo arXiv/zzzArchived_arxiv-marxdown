@@ -1,0 +1,7 @@
+name: marxdown
+version: 0.2.1
+appVersion: 0.2.1
+description: Helm chart for deploying arXiv marXdown sites.
+sources:
+  - https://github.com/arxiv/arxiv-marxdown
+engine: gotpl

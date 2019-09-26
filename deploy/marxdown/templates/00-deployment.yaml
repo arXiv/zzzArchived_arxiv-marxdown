@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: "{{ default "marxdown" .Values.deploymentName }}"
+  labels:
+    app: "{{ default "marxdown" .Values.deploymentName }}"
+    subsystem: "{{ .Values.subsystem }}"
+    container: "{{ .Values.siteName }}"
+    service-group: ui
+    log-style: uwsgi
+    env: "{{ .Values.namespace }}"
+  namespace: "{{ .Values.namespace }}"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "{{ default "marxdown" .Values.deploymentName }}"
+        subsystem: "{{ .Values.subsystem }}"
+        container: "{{ .Values.siteName }}"
+        service-group: ui
+        log-style: uwsgi
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: marxdown-{{ .Values.siteName }}
+        image: {{ .Values.imageName }}:{{ .Values.imageTag }}
+        imagePullPolicy: Always
+        env:
+        - name: SITE_URL_PREFIX
+          value: "{{ default "/" .Values.sub_path }}"
+        - name: SITE_SEARCH_ENABLED
+          value: "{{ default "1" .Values.siteSearchEnabled }}"
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
