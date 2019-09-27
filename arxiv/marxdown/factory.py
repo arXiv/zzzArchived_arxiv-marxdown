@@ -21,7 +21,7 @@ def format_datetime(datestring: str) -> str:
     return dt.strftime("%A, %B %m, %Y at %H:%M US/Eastern")
 
 
-def simepledate(datestring: str) -> str:
+def simpledate(datestring: str) -> str:
     """Render a date like ``1992-05-02``."""
     dt = dateutil.parser.parse(datestring)
     return dt.strftime("%Y-%m-%d")
@@ -73,7 +73,7 @@ def create_web_app(build_path: Optional[str] = None,
         )
 
     app.jinja_env.filters['format_datetime'] = format_datetime  # pylint: disable=no-member
-    app.jinja_env.filters['simepledate'] = simepledate  # pylint: disable=no-member
+    app.jinja_env.filters['simpledate'] = simpledate  # pylint: disable=no-member
     app.jinja_env.filters['pretty_path'] = pretty_path  # pylint: disable=no-member
 
     s3.init_app(app)
