@@ -20,3 +20,11 @@ script:
   - pipenv run pytest --cov=arxiv/marxdown --cov=arxiv/sitemap --cov-report=term-missing arxiv/sitemap arxiv/marxdown
 after_success:
   - coveralls
+deploy:
+  provider: script
+  script:
+    script/install_helm &&
+    script/publish_chart
+  on:
+    branch: master
+    tags: true

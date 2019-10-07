@@ -124,3 +124,4 @@ dist/
 *.DS_Store
 .sass-cache/
 .pytest_cache/
+.history/
