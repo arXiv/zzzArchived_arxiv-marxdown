@@ -52,7 +52,7 @@ SITE_HUMAN_NAME = os.environ.get('SITE_HUMAN_NAME', 'arXiv Static Pages')
 SITE_SEARCH_ENABLED = bool(int(os.environ.get('SITE_SEARCH_ENABLED', 1)))
 APP_VERSION = "0.1"
 
-
+JIRA_FEEDBACK_ENABLED = bool(int(os.environ.get("JIRA_FEEDBACK_ENABLED", "0")))
 JIRA_VERSION = os.environ.get("JIRA_VERSION", "14219")      # docs-0.2
 JIRA_COMPONENT = os.environ.get("JIRA_COMPONENT", "12154")    # Help pages
 JIRA_COLLECTOR_URL = os.environ.get(
