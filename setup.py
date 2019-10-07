@@ -9,7 +9,7 @@ setup(
               in find_packages('arxiv')],
     zip_safe=False,
     install_requires=[
-        'arxiv-base==0.14.3',
+        'arxiv-base==0.15.2',
         'arxiv-auth==0.2.3',
         'flask==1.0.2',
         'bleach==3.1.0',
@@ -24,7 +24,7 @@ setup(
         'mypy_extensions==0.4.1',
         'gitpython==2.1.11',
         'py-gfm==0.1.4',
-        'pyyaml==4.2b4'
+        'pyyaml==5.1b1'
     ],
     include_package_data=True
 )
