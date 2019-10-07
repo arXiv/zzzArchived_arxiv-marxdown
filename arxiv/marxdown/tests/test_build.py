@@ -85,7 +85,7 @@ class TestBuild(TestCase):
         """Build the site, yo."""
         for config in configs:
             self.mock_configure(config)
-        build.build_site()
+        build._build_site()
 
         index_path = os.path.join(self.build_dir, 'idx')
 
