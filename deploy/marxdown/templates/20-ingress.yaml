@@ -1,0 +1,31 @@
+{{- $root := . -}}  # This gives us a reference to the global scope
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ default "marxdown-ingress" .Values.ingressName }}"
+  namespace: "{{ .Values.namespace }}"
+  labels:
+    app: "{{ default "marxdown" .Values.deploymentName }}"
+    subsystem: "{{ .Values.subsystem }}"
+    container: "{{ .Values.deploymentName }}"
+    service-group: ui
+    log-style: uwsgi
+    env: "{{ .Values.namespace }}"
+  annotations:
+    ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Request-Id: $req_id";
+    # ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - "{{ .Values.host }}"
+  rules:
+  - host: "{{ .Values.host }}"
+    http:
+      paths:
+      {{- range .Values.ingressPaths }}
+      - path: {{ . }}
+        backend:
+          serviceName: "{{ $root.Values.serviceName }}"
+          servicePort: 80
+      {{- end }}

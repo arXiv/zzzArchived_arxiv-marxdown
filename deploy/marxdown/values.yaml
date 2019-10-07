@@ -1,0 +1,27 @@
+namespace: development
+imageName: arxiv/help
+imageTag: 0.1
+host: changeme
+serviceName: changeme
+deploymentName: changeme
+ingressName: changeme
+siteSearchEnabled: "1"
+sub_path: "/"
+subsystem: infrastructure
+tls:
+  secret: changeme
+
+# If the app serves more than one path, they can be enumerated here so that the
+# correct ingress rules are defined.
+ingressPaths:
+- "/"
+
+resources:
+  memory:
+    max: 256Mi
+    min: 128Mi
+  cpu:
+    max: 250m
+    min: 50m
+
+env: {}
