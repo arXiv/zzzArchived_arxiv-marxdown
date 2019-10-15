@@ -118,7 +118,7 @@ def do_create_site_map(spec_file: str, out_file: str) -> None:
         # Build the site.
         app = create_web_app(extra_config=_get_site_config(repo_path, spec))
         with app.app_context():
-            build.build_site(False)
+            build._build_site(False)
             subtree = site.get_tree()
             if "server" in spec:
                 subtree = {

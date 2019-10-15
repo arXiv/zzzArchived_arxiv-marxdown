@@ -8,6 +8,9 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+
+env/
+
 build/
 develop-eggs/
 dist/
@@ -23,6 +26,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
 MANIFEST
 
 # SQLite db
@@ -48,7 +52,9 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+
 .pytest_cache/
+
 
 # Translations
 *.mo
@@ -57,7 +63,9 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+
 db.sqlite3
+
 
 # Flask stuff:
 instance/
@@ -84,6 +92,15 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
+# dotenv
+.env
+
+# virtualenv
+requirements.txt
+.venv
+venv/
+ENV/
+
 # Environments
 .env
 .venv
@@ -103,13 +120,39 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# sphinx
+docs/source/_build
+
+# mypy
+.mypy_cache/
+
+.coverage
+.DS_Store
+zero.db
+
+# Editor files & misc
+*~
+*.idea
+*.vscode
+default.nix
+*.db
+*#*
+*.#*
+
+*.pyc
+build/
+dist/
+*.egg-info/
+*.DS_Store
+.sass-cache/
+.pytest_cache/
+.history/
 # mypy
 .mypy_cache/
 
 # IDE files
 .vscode
 .*.swp
-
 
 *.db
 .DS_Store

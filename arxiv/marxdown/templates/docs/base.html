@@ -3,6 +3,8 @@
 {% block addl_head %}
   <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/docs.css')}}" />
   <link rel="stylesheet" href="{{ url_for('docs.static', filename='css/codehilite.css')}}" />
+
+  {% if config.JIRA_FEEDBACK_ENABLED %}
   <script type="text/javascript" src="{{ config.JIRA_COLLECTOR_URL }}"></script>
 
   <script type="text/javascript">
@@ -21,6 +23,7 @@
     }
   };
   </script>
+  {% endif %}
 
 {% endblock addl_head %}
 
@@ -41,7 +44,7 @@
           {% if q %}value="{{ q }}"{% endif %}
         />
       </div>
-      <button class="button is-link is-small">Search</button>
+      <button class="button is-link is-small" style="z-index: 1001">Search</button>
     </div>
   </form>
   {% endif %}
@@ -60,10 +63,9 @@
 
 <aside class="has-text-centered" style="padding-top: 3rem;">
   {% if modified %}
-  <p class="is-size-7">"{{ title }}" revision <a href="{{ version_url }}">{{ version }}</a>. Last modified {% if source_url %}<a href="{{ source_url }}">{% endif %}{{ modified|simepledate }}{% if source_url %}</a>{% endif %}.</p> <button class="button is-small" id="feedback-button">Feedback?</button>
-  {% else %}
-  <button class="button is-small" id="feedback-button">Feedback?</button>
+  <p class="is-size-7">"{{ title }}" revision <a href="{{ version_url }}">{{ version }}</a>. Last modified {% if source_url %}<a href="{{ source_url }}">{% endif %}{{ modified|simpledate }}{% if source_url %}</a>{% endif %}.</p>
   {% endif %}
+  {% if config.JIRA_FEEDBACK_ENABLED %}<button class="button is-small" id="feedback-button">Feedback?</button>{% endif %}
 </aside>
 
 {% endblock content %}

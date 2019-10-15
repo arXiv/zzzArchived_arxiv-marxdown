@@ -6,7 +6,7 @@ from werkzeug.urls import url_parse, url_unparse, url_encode
 from werkzeug.exceptions import NotFound
 import jinja2
 from flask_s3 import url_for as s3_url_for
-from flask import Blueprint, render_template_string, request, \
+from flask import Flask, Blueprint, render_template_string, request, \
     render_template, current_app, url_for, redirect, Response
 
 from arxiv import status
@@ -146,7 +146,14 @@ def get_blueprint(site_path: str, with_search: bool = True) -> Blueprint:
     return blueprint
 
 
-docs = Blueprint('docs', __name__, url_prefix='/_marxdown',
-                 static_folder='static',
-                 template_folder='templates',
-                 static_url_path='static')
+def get_docs_blueprint(app: Flask) -> Blueprint:
+    """Generate a blueprint for base marXdown static files and templates."""
+    if app.config.get('RELATIVE_STATIC_PATHS'):
+        url_prefix = f'{site.get_url_prefix()}/_marxdown'
+    else:
+        url_prefix = '/_marxdown'
+    return Blueprint('docs', __name__,
+                     url_prefix=url_prefix,
+                     static_folder='static',
+                     template_folder='templates',
+                     static_url_path='static')
