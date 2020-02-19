@@ -10,7 +10,7 @@ pyyaml = "==5.1b1"
 whoosh = "*"
 bleach = "*"
 uwsgi = "*"
-arxiv-base = "==0.15.8rc4"
+arxiv-base = "==0.16.6"
 python-frontmatter = "*"
 python-slugify = "*"
 Pygments = "*"
@@ -24,13 +24,15 @@ py-gfm = "*"
 urllib3 = ">=1.24.2"    # CVE-2019-11324
 Jinja2 = ">=2.10.1"     # CVE-2019-10906
 e1839a8 = {path = "."}
+mypy = "==0.760"
 
 [dev-packages]
 "nose2" = "==0.8.0"
 mypy = "==0.701"
-pylint = "==2.2.2"
+pylint = "==2.4.4"
 pydocstyle = "==3.0.0"
 moto = "*"
 pytest = "*"
 pytest-cov = "*"
 coveralls = "*"
+gitdb = "*"
