@@ -1,4 +1,4 @@
-FROM arxiv/base:0.12.1
+FROM arxiv/base:0.16.6
 
 WORKDIR /opt/arxiv/
 
