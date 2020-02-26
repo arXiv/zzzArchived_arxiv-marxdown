@@ -19,12 +19,12 @@ openapi-spec-validator = "*"
 arxiv-auth = "==0.2.3"
 "flask-s3" = "*"
 mypy-extensions = "*"
-gitpython = "*"
 py-gfm = "*"
 urllib3 = ">=1.24.2"    # CVE-2019-11324
 Jinja2 = ">=2.10.1"     # CVE-2019-10906
 e1839a8 = {path = "."}
 mypy = "==0.760"
+arxiv-marxdown = {path = "."}
 
 [dev-packages]
 "nose2" = "==0.8.0"
@@ -35,4 +35,5 @@ moto = "*"
 pytest = "*"
 pytest-cov = "*"
 coveralls = "*"
-gitdb = "*"
+gitpython = "*"
+gitdb2 = "==3.0.1"
