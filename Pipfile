@@ -16,7 +16,7 @@ python-slugify = "*"
 Pygments = "*"
 prance = "*"
 openapi-spec-validator = "*"
-arxiv-auth = "==0.2.3"
+arxiv-auth = "==0.4.2rc1"
 "flask-s3" = "*"
 mypy-extensions = "*"
 py-gfm = "*"
@@ -37,3 +37,6 @@ pytest-cov = "*"
 coveralls = "*"
 gitpython = "*"
 gitdb2 = "==3.0.1"
+
+[pipenv]
+allow_prereleases = true
