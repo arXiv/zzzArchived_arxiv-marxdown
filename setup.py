@@ -9,8 +9,8 @@ setup(
               in find_packages('arxiv')],
     zip_safe=False,
     install_requires=[
-        'arxiv-base==0.15.2',
-        'arxiv-auth==0.2.3',
+        'arxiv-base==0.16.6',
+        'arxiv-auth==0.4.2rc1',
         'flask==1.0.2',
         'bleach==3.1.0',
         'unidecode==1.0.23',
