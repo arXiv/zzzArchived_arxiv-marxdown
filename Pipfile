@@ -25,7 +25,7 @@ Jinja2 = ">=2.10.1"     # CVE-2019-10906
 mypy = "==0.760"
 arxiv-marxdown = {path = "."}
 gitpython = "==2.1.11"
-gitdb= "*"
+gitdb2 = "==2.0.6"
 
 [dev-packages]
 "nose2" = "==0.8.0"
