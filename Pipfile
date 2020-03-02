@@ -16,15 +16,16 @@ python-slugify = "*"
 Pygments = "*"
 prance = "*"
 openapi-spec-validator = "*"
-arxiv-auth = "==0.2.3"
+arxiv-auth = "==0.4.2rc1"
 "flask-s3" = "*"
 mypy-extensions = "*"
-gitpython = "*"
 py-gfm = "*"
 urllib3 = ">=1.24.2"    # CVE-2019-11324
 Jinja2 = ">=2.10.1"     # CVE-2019-10906
-e1839a8 = {path = "."}
 mypy = "==0.760"
+arxiv-marxdown = {path = "."}
+gitpython = "==2.1.11"
+gitdb2 = "==2.0.6"
 
 [dev-packages]
 "nose2" = "==0.8.0"
@@ -35,4 +36,7 @@ moto = "*"
 pytest = "*"
 pytest-cov = "*"
 coveralls = "*"
-gitdb = "*"
+gitpython = "==2.1.11"
+
+[pipenv]
+allow_prereleases = true
