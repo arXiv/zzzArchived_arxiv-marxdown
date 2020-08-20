@@ -64,3 +64,6 @@ RELEASE_NOTES_TEXT = "v0.2 released 2019-02-11"
 
 RELATIVE_STATIC_PATHS = bool(int(os.environ.get('RELATIVE_STATIC_PATHS', '0')))
 """If true, all static paths are under ``SITE_URL_PREFIX``."""
+
+DOCS_ANALYTICS_ENABLED = bool(int(os.environ.get("BROWSE_ANALYTICS_ENABLED", "1")))
+"""Enable/disable web analytics."""

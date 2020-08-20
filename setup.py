@@ -4,12 +4,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='arxiv-marxdown',
-    version='0.2.4rc3',
+    version='0.2.4rc4',
     packages=[f'arxiv.{package}' for package
               in find_packages('arxiv')],
     zip_safe=False,
     install_requires=[
-        'arxiv-base==0.16.6',
+        'arxiv-base==0.16.8',
         'arxiv-auth==0.4.2rc1',
         'flask==1.0.2',
         'bleach==3.1.0',
