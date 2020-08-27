@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='arxiv-marxdown',
-    version='0.2.4rc5',
+    version='0.2.4rc6',
     packages=[f'arxiv.{package}' for package
               in find_packages('arxiv')],
     zip_safe=False,
