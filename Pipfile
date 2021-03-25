@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 markdown = "*"
-pyyaml = "==5.1b1"
+pyyaml = "==5.4"
 whoosh = "*"
 bleach = "*"
 uwsgi = "*"
