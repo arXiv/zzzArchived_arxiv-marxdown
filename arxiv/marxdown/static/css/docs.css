@@ -1,24 +1,164 @@
-.match {
-  color: #287916 !important;
-  background-color: #EEFFE8 !important;
-  font-weight: bold;
+@charset "UTF-8";
+/**********CUSTOM MARKDOWN STYLES*********/
+.marxdown {
+  margin: 0;
+  padding: 0;
+  /*general marxdown styles*/
+  /*Image styles*/
+  /*********** TODO: replace these with instructions for using bootstrap classes **********/
+  /*Ordered lists*/
+  /*Blockquote styles*/
 }
-
-/* adjusts content to vertically align with interior search bar */
-@media screen and (min-width: 769px) {
-  .search-shift-up {
-      position: relative;
-      top: -1.75rem;
-    }
-  .breadcrumb ul {
-    margin-top: 0;
+.marxdown h2, .marxdown h2, .marxdown h4, .marxdown h5 {
+  clear: both;
+}
+.marxdown aside {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+.marxdown .mkd-img-border {
+  margin: 1em 0px;
+  padding: 10px;
+  border: 0.25em solid #ededed;
+}
+.marxdown .mkd-horz-spacing {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+.marxdown .mkd-img-left {
+  float: left;
+  width: 100%;
+  margin-top: 0;
+}
+.marxdown .mkd-img-right {
+  float: right;
+  width: 100%;
+  margin-top: 0;
+}
+.marxdown .mkd-img-full {
+  width: 100% !important;
+}
+.marxdown .mkd-img-60 {
+  width: 100% !important;
+  margin: 0 auto;
+  display: block;
+}
+.marxdown .mkd-img-thumb {
+  max-width: 150px !important;
+}
+.marxdown .mkd-img-icon {
+  border-radius: 25%;
+  width: 150px;
+  float: left;
+  margin: 0 0.5em;
+}
+@media (min-width: 576px) {
+  .marxdown .mkd-img-left {
+    width: calc(50% - 1.25em);
+    margin-right: 2em;
+  }
+  .marxdown .mkd-img-right {
+    width: calc(50% - 1.25em);
+    margin-left: 2em;
+  }
+  .marxdown .mkd-img-60 {
+    width: 60% !important;
+    margin: 0 auto;
+    display: block;
+  }
+}
+.marxdown ol {
+  list-style: none;
+  margin-left: 0 !important;
+  margin: 0;
+  padding: 0;
+}
+.marxdown ol li {
+  display: inline;
+}
+.marxdown ol li::after {
+  content: " •";
+  margin: 0 0.15em 0 0.45em;
+  color: #b31b1b;
+  font-weight: 900;
+}
+.marxdown ol li:last-child::after {
+  content: "";
+  margin: 0;
+}
+.marxdown blockquote {
+  border-left: 0;
+  -webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.12);
+  padding: 1em;
+  margin-bottom: 1.5em;
+  /* ordered lists */
+  /* unordered lists */
+}
+.marxdown blockquote img {
+  height: 40px;
+  display: block;
+  margin: 1em auto 0 auto;
+}
+.marxdown blockquote ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.marxdown blockquote ol li {
+  width: 100%;
+  padding: 1em;
+  -webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.marxdown blockquote ol li::after {
+  content: "";
+  margin: 0;
+}
+.marxdown blockquote ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.marxdown blockquote ul li {
+  width: 100%;
+  padding: 1em;
+  margin: 1%;
+  -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 576px) {
+  .marxdown blockquote {
+    padding: 2em;
+  }
+  .marxdown blockquote ol li {
+    width: calc(50% - 10px);
+  }
+  .marxdown blockquote ul li {
+    width: 48%;
+  }
+}
+@media (min-width: 986px) {
+  .marxdown blockquote ul li {
+    width: 23%;
   }
 }
 
-.breadcrumb {
-  margin-bottom: 0;
-}
-
-.breadcrumb ul {
-  margin-left: 0;
-}
+/*# sourceMappingURL=docs.css.map */
