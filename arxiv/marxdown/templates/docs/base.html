@@ -1,7 +1,5 @@
 {%- extends "base/base.html" %}
 
-{% import 'base/macros.html' as base_macros %}
-
 {% set pagetitle %}{{ title }}{% endset %}
 {% set breadcrumb = {
   url_for(site_name + '.from_sitemap') : site_human_short_name + ' pages',
@@ -86,18 +84,32 @@
     </nav>
 
     {% if config.SITE_SEARCH_ENABLED %}
-    {{ macros.universalsearch('Search Documentation', '.search') }}
+    <form class="arxiv-search-form" method="GET" action="{{ url_for(site_name + '.search')}}">
+        <h3 class="w-100"><label for="q" class="form-label">Search</label></h3>
+        <div class="input-group">
+          <input class="form-control arxiv-search-field" type="search" placeholder="Search {{ site_human_name }}" aria-label="Search {{ site_human_name }}" name="q" {% if q %}value="{{ q }}"{% endif %}>
+          <button class="btn btn-secondary" type="submit">
+            <span class="visually-hidden">Search</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="2" class="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </button>
+        </div>
+    </form>
+    <a href="{{ url_for(site_name)}}/search"></a>
     {% endif %}
 
     <aside class="">
       {% if modified %}
       <p class="small">"{{ title }}" revision <a href="{{ version_url }}">{{ version }}</a>. Last modified {% if source_url %}<a href="{{ source_url }}">{% endif %}{{ modified|simpledate }}{% if source_url %}</a>{% endif %}.</p>
       {% endif %}
-      {% if config.JIRA_FEEDBACK_ENABLED %}<button class="button is-small" id="feedback-button">Feedback?</button>{% endif %}
+      {% if config.JIRA_FEEDBACK_ENABLED %}<button class="btn btn-outline-secondary btn-tiny" id="feedback-button">Feedback?</button>{% endif %}
     </aside>
   </div>
   <div class="col">
     {% block markdown_content %}
+    {% endblock %}
+    {% block inner_content %}
     {% endblock %}
   </div>
 </div>

@@ -3,53 +3,69 @@
 {% block search_bar %}
 {% endblock %}
 
-{% block page_content %}
-<form action="{{ url_for(site_name + '.search')}}" method="GET" class="form">
-  <div class="field has-addons-tablet">
-    <div class="control is-expanded">
-      <label for="q" class="is-sr-only">Search {{ site_human_name }}</label>
-      <input
-        class="input is-small"
-        type="text"
-        name="q"
-        placeholder="Search {{ site_human_name }}"
-        {% if q %}value="{{ q }}"{% endif %}
-      />
-    </div>
-    <button class="button is-link is-small">Search</button>
-  </div>
-</form>
+{% block content %}
+<div class="d-flex justify-content-center">
+  <form class="arxiv-search-form" method="GET" action="{{ url_for(site_name + '.search')}}">
+      <h3 class="w-100 d-flex justify-content-center"><label for="q" class="form-label">Search {{ site_human_name }}</label></h3>
+      <div class="input-group">
+        <input class="form-control arxiv-search-field" type="search" placeholder="Search {{ site_human_name }}" aria-label="Search {{ site_human_name }}" name="q" {% if q %}value="{{ q }}"{% endif %}>
+        <button class="btn btn-secondary" type="submit">
+          <span class="visually-hidden">Search</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="2" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+      </div>
+  </form>
+</div>
 
 {% if results %}
-<nav class="pagination is-small is-centered breathe-horizontal" role="navigation" aria-label="pagination">
-    {% if results.previous_page is not none %}
-    <a href="{{ url_for_page(results.previous_page) }}" class="pagination-previous">Previous</a>
-    {% else %}
-    <a href="" class="pagination-previous is-invisible">Previous</a>
-    {% endif %}
-    {% if results.next_page is not none %}
-    <a href="{{ url_for_page(results.next_page) }}" class="pagination-next">Next</a>
-    {% else %}
-    <a href="" class="pagination-next is-invisible">Next</a>
-    {% endif %}
-    <ul class="pagination-list">
-      Showing results {{ results.start }}&ndash;{{ results.end }} of {{ results.total }}
-    </ul>
-</nav>
+<div class="row align-items-center arxiv-pagination">
+  <div class="col-auto results">
+    Showing results <strong>{{ results.start }}&ndash;{{ results.end }}</strong> of {{ results.total }}
+  </div>
+  <div class="col paginate">
+    <ul class="nav">
+      {% if results.previous_page is not none %}
+      <li class="nav-item">
+        <a href="{{ url_for_page(results.previous_page) }}" class="nav-link">Previous</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <span class="nav-link disabled">Previous</span>
+      </li>
+      {% endif %}
 
-<ol class="breathe-horizontal" start="{{ (results.current_page - 1) * results.limit + 1}}">
+      {% if results.next_page is not none %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for_page(results.next_page) }}">Next</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <span class="nav-link disabled">Next</span>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
+<ol class="arxiv-results-list" start="{{ (results.current_page - 1) * results.limit + 1}}">
   {% for title, page_path, highlights in results.results %}
-  <li class="li">
-      <div class="title is-size-6" style="margin-bottom: 0em;">
+  <li>
+    <div class="row gx-0">
+      <div class="col-auto">
         {% set path = page_path|pretty_path %}
-        <a href="{{ url_for(site_name + '.from_sitemap', page_path=path) }}">{{ title }}</a>
+        <a href="{{ url_for(site_name + '.from_sitemap', page_path=path) }}">{{ title }}</a>:
       </div>
-      <div class="is-size-6">
+      <div class="col-auto">
         {{ highlights|safe }}
       </div>
+      <div class="col">
+      </div>
+    </div>
   </li>
   {% endfor %}
 </ol>
 {% endif %}
 
-{% endblock page_content %}
+{% endblock content %}
