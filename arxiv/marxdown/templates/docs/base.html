@@ -1,6 +1,7 @@
 {%- extends "base/base.html" %}
 
 {% set pagetitle %}{{ title }}{% endset %}
+{#- build breadcrumb items as link : label pairs, excluding home and current page -#}
 {% set breadcrumb = {
   url_for(site_name + '.from_sitemap') : site_human_short_name + ' pages',
   'testing' : 'Parent group here?',
