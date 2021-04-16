@@ -9,7 +9,7 @@ setup(
               in find_packages('arxiv')],
     zip_safe=False,
     install_requires=[
-        'arxiv-base==0.16.8',
+        'arxiv-base @ git+https://github.com/arxiv/arxiv-base@ARXIVNG-3824-bootstrap#egg=package-1.0',
         'arxiv-auth==0.4.2rc1',
         'flask==1.0.2',
         'bleach==3.1.0',
