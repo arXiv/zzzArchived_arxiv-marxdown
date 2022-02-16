@@ -10,27 +10,33 @@ pyyaml = "==5.1b1"
 whoosh = "*"
 bleach = "*"
 uwsgi = "*"
-arxiv-base = "==0.15.8rc4"
+arxiv-base = "==0.17.4.post2"
 python-frontmatter = "*"
 python-slugify = "*"
 Pygments = "*"
 prance = "*"
 openapi-spec-validator = "*"
-arxiv-auth = "==0.2.3"
+arxiv-auth = "==0.4.2rc1"
 "flask-s3" = "*"
 mypy-extensions = "*"
-gitpython = "*"
 py-gfm = "*"
 urllib3 = ">=1.24.2"    # CVE-2019-11324
 Jinja2 = ">=2.10.1"     # CVE-2019-10906
-e1839a8 = {path = "."}
+mypy = "==0.760"
+arxiv-marxdown = {path = "."}
+gitpython = "==2.1.11"
+gitdb2 = "==2.0.6"
 
 [dev-packages]
 "nose2" = "==0.8.0"
 mypy = "==0.701"
-pylint = "==2.2.2"
+pylint = "==2.4.4"
 pydocstyle = "==3.0.0"
 moto = "*"
 pytest = "*"
 pytest-cov = "*"
 coveralls = "*"
+gitpython = "==2.1.11"
+
+[pipenv]
+allow_prereleases = true
