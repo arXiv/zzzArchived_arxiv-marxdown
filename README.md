@@ -1,6 +1,16 @@
 # arXiv marXdown
 
-This project implements a markdown-driven static site for arXiv static pages.
+**DO NOT USE**
+
+**This project is shut down and is no longer in use at arXiv.**
+
+The code in this repo was a poor use of resources given the many full
+featured open source markdown to HTML projects. Converting the arXiv
+help pages to markdown was valuable and the result of that work
+continues to be used. We've moved to
+[mkdocs-material](https://squidfunk.github.io/mkdocs-material/). This
+has worked well. It is a mature system with good documentation,
+plugins and support from the author and a friendly community.
 
 ## Overview
 
